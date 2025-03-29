@@ -1,0 +1,25 @@
+@import "tailwindcss";
+@plugin "daisyui";
+* {
+    font-family: "Roboto", sans-serif;
+  }
+  body{
+    color: #666666;
+    background-color: #fff;
+  }
+
+  .playfair {
+    font-family: "Playfair Display", serif;
+  }
+
+
+  .swiper {
+    height: 100%;
+  }
+  
+  .swiper-slide {
+  height: auto !important;
+  }
+  .swiper .card  {
+  height: 100% !important
+  }
