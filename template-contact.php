@@ -16,7 +16,7 @@ get_header();
                 </ul>
             </div>
 
-            <div class="text-2xl lg:text-4xl font-bold text-center text-black playfair">
+            <div class="text-2xl lg:text-4xl font-bold text-center text-black ">
                 Contact Us
             </div>
         </div>
@@ -27,7 +27,7 @@ get_header();
             <!-- Google Map -->
             <div class="h-80 lg:h-auto">
                 <iframe class="w-full h-full rounded-lg shadow-lg"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.145117806295!2d77.5946!3d12.9716!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae167f1214f87b%3A0x8b239f1e9f6a1b3!2sBangalore!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3916.3987463305502!2d76.94362677480845!3d11.00867978915455!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba8591ebb60007b%3A0x12d607be2eb333fd!2sFather%20Randy%20St%2C%20R.S.%20Puram%2C%20Coimbatore%2C%20Tamil%20Nadu%20641002!5e0!3m2!1sen!2sin!4v1743405274988!5m2!1sen!2sin"
                     allowfullscreen="" loading="lazy">
                 </iframe>
             </div>
@@ -76,7 +76,7 @@ get_header();
                     <!-- Submit Button -->
                     <div class="text-center">
                         <button type="submit"
-                            class="bg-yellow-600 cursor-pointer text-white font-bold py-2 px-6 rounded-lg hover:bg-yellow-700 transition duration-300">
+                            class="bg-[#F78D1E] cursor-pointer text-white font-bold py-2 px-6 rounded-lg hover:bg-[#F78D1E] transition duration-300">
                             Submit
                         </button>
                     </div>
@@ -91,54 +91,55 @@ get_header();
         <div class="px-8 lg:px-12 xl:px-16 mb-12">
             <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 bg-[#F7F6F2] p-8 rounded-md">
                 <div class="flex items-center gap-4">
-                    <div class="flex items-center border-2 border-yellow-600 rounded-full p-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 fill-yellow-600">
+                    <div class="flex items-center border-2 border-[#F78D1E] rounded-full p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 fill-[#F78D1E]">
                             <path fill-rule="evenodd"
                                 d="m11.54 22.351.07.04.028.016a.76.76 0 0 0 .723 0l.028-.015.071-.041a16.975 16.975 0 0 0 1.144-.742 19.58 19.58 0 0 0 2.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 0 0-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 0 0 2.682 2.282 16.975 16.975 0 0 0 1.145.742ZM12 13.5a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"
                                 clip-rule="evenodd" />
                         </svg>
 
                     </div>
-                    <div>60 29th San Francisco, 507 - Union Trade Center</div>
+                    <div>12 & 13, Father Randy Street, R.S. Puram, Coimbatore - 641002</div>
                 </div>
 
                 <div class="flex items-center gap-4">
-                    <div class="flex items-center border-2 border-yellow-600 rounded-full p-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 fill-yellow-600"">
-  <path fill-rule="evenodd" d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z" clip-rule="evenodd" />
-</svg>
+                    <div class="flex items-center border-2 border-[#F78D1E] rounded-full p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 fill-[#F78D1E]"">
+  <path fill-rule=" evenodd" d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z" clip-rule="evenodd" />
+                        </svg>
 
 
                     </div>
                     <div>Call us:
-                        <br>+00 123-456-789</div>
+                        <br>+91 8056894111
+                    </div>
                 </div>
 
 
                 <div class="flex items-center gap-4">
-                    <div class="flex items-center border-2 border-yellow-600 rounded-full p-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 fill-yellow-600"">
-  <path d="M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z" />
-  <path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z" />
-</svg>
+                    <div class="flex items-center border-2 border-[#F78D1E] rounded-full p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 fill-[#F78D1E]"">
+  <path d=" M1.5 8.67v8.58a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3V8.67l-8.928 5.493a3 3 0 0 1-3.144 0L1.5 8.67Z" />
+                        <path d="M22.5 6.908V6.75a3 3 0 0 0-3-3h-15a3 3 0 0 0-3 3v.158l9.714 5.978a1.5 1.5 0 0 0 1.572 0L22.5 6.908Z" />
+                        </svg>
 
 
                     </div>
                     <div>Mail us: <br>
-                    demo@example.com</div>
+                    krishacharitabletrustcbe@gmail.com</div>
                 </div>
 
 
                 <div class="flex items-center gap-4">
-                    <div class="flex items-center border-2 border-yellow-600 rounded-full p-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 fill-yellow-600"">
-  <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z" clip-rule="evenodd" />
-</svg>
+                    <div class="flex items-center border-2 border-[#F78D1E] rounded-full p-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-6 fill-[#F78D1E]"">
+  <path fill-rule=" evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25ZM12.75 6a.75.75 0 0 0-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 0 0 0-1.5h-3.75V6Z" clip-rule="evenodd" />
+                        </svg>
 
 
                     </div>
                     <div>Open time: <br>
-                    10:00AM – 6:00PM</div>
+                    24x7</div>
                 </div>
             </div>
         </div>
@@ -151,50 +152,50 @@ get_header();
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
-document.getElementById("contact-form").addEventListener("submit", function(event) {
-    event.preventDefault();
+    document.getElementById("contact-form").addEventListener("submit", function(event) {
+        event.preventDefault();
 
-    const apiEndpoint = "http://localhost/kct/wp-json/contact-form-7/v1/contact-forms/46/feedback";
-    const formData = new FormData();
+        const apiEndpoint = "https://jewelonestaging.brightbridge.co/wp-json/contact-form-7/v1/contact-forms/46/feedback";
+        const formData = new FormData();
 
-    formData.append("your-name", document.getElementById("your-name").value);
-    formData.append("your-phone", document.getElementById("your-phone").value);
-    formData.append("your-email", document.getElementById("your-email").value);
-    formData.append("your-message", document.getElementById("your-message").value);
-    formData.append("_wpcf7_unit_tag", "wpcf7-f46-o1"); // Replace with actual unit tag if needed
+        formData.append("your-name", document.getElementById("your-name").value);
+        formData.append("your-phone", document.getElementById("your-phone").value);
+        formData.append("your-email", document.getElementById("your-email").value);
+        formData.append("your-message", document.getElementById("your-message").value);
+        formData.append("_wpcf7_unit_tag", "wpcf7-f46-o1"); // Replace with actual unit tag if needed
 
-    fetch(apiEndpoint, {
-            method: "POST",
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === "mail_sent") {
-                Swal.fire({
-                    icon: "success",
-                    title: "Success!",
-                    text: "Your message has been sent successfully!",
-                });
+        fetch(apiEndpoint, {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === "mail_sent") {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Success!",
+                        text: "Your message has been sent successfully!",
+                    });
 
-                // Reset the form after submission
-                document.getElementById("contactForm").reset();
-            } else {
+                    // Reset the form after submission
+                    document.getElementById("contact-form").reset();
+                } else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Something went wrong. Please try again.",
+                    });
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
                 Swal.fire({
                     icon: "error",
                     title: "Oops...",
-                    text: "Something went wrong. Please try again.",
+                    text: "Failed to submit the form. Please try again later.",
                 });
-            }
-        })
-        .catch(error => {
-            console.error("Error:", error);
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Failed to submit the form. Please try again later.",
             });
-        });
-});
+    });
 </script>
 
 
