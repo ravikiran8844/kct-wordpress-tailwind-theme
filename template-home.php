@@ -33,6 +33,8 @@ get_header();
 
     <section>
         <div class="grid lg:grid-cols-3">
+       
+
             <div class="text-white relative flex justify-center items-center h-full">
                 <img loading="lazy" class="w-full h-64 lg:h-84 object-cover" src="wp-content/uploads/2025/03/section2-bg1.webp" alt="">
                 <div
@@ -200,9 +202,8 @@ get_header();
                             <img loading="lazy" class="object-cover w-full h-48" src="wp-content/uploads/2025/03/section3-img3.webp"
                                 alt="" />
                             <div class="card-body items-center text-center p-6">
-                                <h2 class="card-title text-xl font-semibold  mb-4 text-black">Day with the
-                                    Orphanage</h2>
-                                <p>When words are not enough, Love expresses</p>
+                                <h2 class="card-title text-xl font-semibold  mb-4 text-black">When words are not enough, Love expresses</h2>
+                                <p>Creating Joyful Moments with Special Children – A Truly Fulfilling Experience!</p>
                             </div>
                         </div>
                     </div>
@@ -241,19 +242,19 @@ get_header();
                         <div class="swiper swiper-gallery">
                             <div class="swiper-wrapper">
                                 <div class="swiper-slide">
-                                    <img loading="lazy" class="object-cover w-full h-58" src="wp-content/uploads/2025/03/section5-img1.webp"
+                                    <img loading="lazy" class="w-full h-58" src="wp-content/uploads/2025/03/section5-img1.webp"
                                         alt="" />
                                 </div>
                                 <div class="swiper-slide">
-                                    <img loading="lazy" class="object-cover w-full h-58" src="wp-content/uploads/2025/03/section5-img1-2.webp"
+                                    <img loading="lazy" class="w-full h-58" src="wp-content/uploads/2025/03/section5-img1-2.webp"
                                         alt="" />
                                 </div>
                                 <div class="swiper-slide">
-                                    <img loading="lazy" class="object-cover w-full h-58" src="wp-content/uploads/2025/03/section5-img1-3.webp"
+                                    <img loading="lazy" class="w-full h-58" src="wp-content/uploads/2025/03/section5-img1-3.webp"
                                         alt="" />
                                 </div>
                                 <div class="swiper-slide">
-                                    <img loading="lazy" class="object-cover w-full h-58" src="wp-content/uploads/2025/03/section5-img1-4.webp"
+                                    <img loading="lazy" class="w-full h-58" src="wp-content/uploads/2025/03/section5-img1-4.webp"
                                         alt="" />
                                 </div>
 
@@ -266,7 +267,7 @@ get_header();
                     <div class="card-body items-center text-center p-6">
                         <h2 class="card-title text-xl font-semibold mb-4 text-black">CHILDREN’S EDUCATION
                         </h2>
-                        <div class="font-medium mb-4 text-black">Government Tribal Residential Higher Secondary School, Anaikatti
+                        <div class="font-semibold mb-4 text-black">Government Tribal Residential Higher Secondary School, Anaikatti
                         </div>
                         <p>Stronger Foundations with Modern Infrastructure – New Auditorium, Computer Lab & Revamped Classrooms to Improve Government School.</p>
                     </div>
@@ -297,7 +298,7 @@ get_header();
                     <div class="card-body items-center text-center p-6">
                         <h2 class="card-title text-xl font-semibold mb-4 text-black">HEALTH CARE
                         </h2>
-                        <div class="font-medium mb-4 text-black">Expert Care, Every Step of the Way!
+                        <div class="font-semibold mb-4 text-black">Expert Care, Every Step of the Way!
                         </div>
                         <p>Comprehensive Care with Expert Specialists Across Multiple Medical Departments!</p>
                     </div>
@@ -322,7 +323,7 @@ get_header();
                     <div class="card-body items-center text-center p-6">
                         <h2 class="card-title text-xl font-semibold mb-4 text-black">RURAL DEVELOPMENT
                         </h2>
-                        <div class="font-medium mb-4 text-black"> Fostering Entrepreneurial Growth
+                        <div class="font-semibold mb-4 text-black"> Fostering Entrepreneurial Growth
 
                         </div>
                         <p>3-Month Sewing Training with Business Loan Support – Empowering Entrepreneurs for Growth!</p>
@@ -377,7 +378,7 @@ get_header();
 
 
     <section class="text-gray-600 body-font relative">
-        <div class="p-4 py-6 lg:p-12 xl:p-16 relative z-1">
+        <div class="p-4 py-6 lg:p-12 xl:p-16 relative z-1 backdrop-brightness-20">
 
             <div class="text-center mb-6">
                 <div class="text-[#F78D1E] text-lg font-medium mb-4">
@@ -397,7 +398,7 @@ get_header();
 
             </div>
         </div>
-        <img loading="lazy" src="wp-content/uploads/2025/03/testimonial-parallax.webp" alt="background image" class="absolute top-0 left-0 w-full h-full object-cover z-0">
+        <img loading="lazy" src="wp-content/uploads/2025/03/testimonial-parallax.webp" alt="background image" class="absolute top-0 left-0 w-full h-full object-cover z-0 ">
     </section>
 
 
@@ -483,7 +484,7 @@ get_header();
     </section>
 
     <section class="text-gray-600 body-font relative" id="contact-us">
-        <div class="p-4 py-6 lg:p-12 xl:p-16 relative z-1">
+        <div class="p-4 py-6 lg:p-12 xl:p-16 relative z-1 backdrop-brightness-20">
 
             <div class="text-center mb-10">
                 <div class="text-[#F78D1E] text-lg font-medium mb-4">
@@ -500,21 +501,21 @@ get_header();
 
 
 
-            <div class="xl:w-1/2 lg:w-3/4 w-full mx-auto text-start">
-                <div class="bg-gray-100 min-h-screen flex items-center justify-center p-6">
-                    <div class="max-w-lg w-full bg-white shadow-lg rounded-lg p-8">
-                        <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">Contact Us</h2>
-                        <form id="contact-form" class="space-y-4">
+            <div>
+                <div class="flex items-center justify-center p-6">
+                    <div class="max-w-lg w-full bg-white shadow-lg rounded-lg p-6">
+                        <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">Contact Us</h2>
+                        <form id="contact-form" class="grid md:grid-cols-2 gap-4">
 
                             <!-- Name -->
                             <div>
-                                <label class="block text-gray-700 font-medium mb-1">Enter your Name</label>
+                                <label class="block text-gray-700 font-medium mb-1 text-sm">Enter your Name</label>
                                 <input id="your-name" type="text" name="name" id="name" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-400 focus:outline-none" placeholder="John Doe" required>
                             </div>
 
                             <!-- Mobile Number -->
                             <div>
-                                <label class="block text-gray-700 font-medium mb-1">Mobile Number</label>
+                                <label class="block text-gray-700 font-medium mb-1 text-sm">Mobile Number</label>
                                 <input id="your-phone" type="tel" minlength="10" maxlength="10"
                                     oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                                     name="phone" id="phone" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-400 focus:outline-none" placeholder="9876543210" pattern="[0-9]{10}" required>
@@ -522,24 +523,24 @@ get_header();
 
                             <!-- Email Address -->
                             <div>
-                                <label class="block text-gray-700 font-medium mb-1">Email Address</label>
+                                <label class="block text-gray-700 font-medium mb-1 text-sm">Email Address</label>
                                 <input id="your-email" type="email" name="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-400 focus:outline-none" placeholder="you@example.com" required>
                             </div>
 
                             <!-- Location -->
                             <div>
-                                <label class="block text-gray-700 font-medium mb-1">Location</label>
+                                <label class="block text-gray-700 font-medium mb-1 text-sm">Location</label>
                                 <input id="your-location" type="text" name="location" id="location" class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-400 focus:outline-none" placeholder="City, Country" required>
                             </div>
 
                             <!-- Comments -->
-                            <div>
-                                <label class="block text-gray-700 font-medium mb-1">Comments</label>
+                            <div class="md:col-span-2">
+                                <label class="block text-gray-700 font-medium mb-1 text-sm">Comments</label>
                                 <textarea id="your-message" name="comments" id="comments" rows="4" class="w-full resize-none px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-400 focus:outline-none" placeholder="Write your message..."></textarea>
                             </div>
 
                             <!-- Submit Button -->
-                            <div class="text-center">
+                            <div class="text-center  md:col-span-2">
                                 <button type="submit" class="bg-[#F78D1E] cursor-pointer text-white font-bold py-2 px-6 rounded-lg hover:bg-[#F78D1E] transition duration-300">
                                     Submit
                                 </button>
