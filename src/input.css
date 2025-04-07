@@ -27,3 +27,32 @@
     max-width: 100%;
     overflow: hidden;
   }
+
+
+
+
+     .swiper-button-prev:after,
+        .swiper-rtl .swiper-button-next:after {
+            content: '' !important;
+        }
+
+        .swiper-button-next:after,
+        .swiper-rtl .swiper-button-prev:after {
+            content: '' !important;
+        }
+
+        .swiper-button-next svg,
+        .swiper-button-prev svg {
+            width: 24px !important;
+            height: 24px !important;
+        }
+
+        .swiper-button-next,
+        .swiper-button-prev {
+            position: relative !important;
+        }
+
+    .testimonials-section .swiper-slide{
+      display: grid;
+      grid-template-rows: 30px auto 60px;
+    }

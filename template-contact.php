@@ -21,7 +21,7 @@ get_header();
             </div>
         </div>
     </section>
-    <section class="p-4 py-8 lg:p-12 xl:p-16">
+    <section class="p-4 py-8 sm:p-8 lg:p-12 xl:p-16">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
 
             <!-- Google Map -->
@@ -33,7 +33,7 @@ get_header();
             </div>
 
             <!-- Contact Form -->
-            <div class="bg-[#F7F7F7] p-6 rounded-lg shadow-lg">
+            <div class="bg-[#F7F7F7] p-6 rounded-lg shadow-lg" id="contact-us">
                 <h2 class="text-2xl font-bold mb-2 text-black">Get In Touch With Us
                 </h2>
                 <div class="mb-4">If you wish to directly reach us, Please fill out the form below -
@@ -132,7 +132,8 @@ get_header();
 
                     </div>
                     <div>Mail us: <br>
-                        <span class="break-all">krishacharitabletrustcbe@gmail.com</span></div>
+                        <span class="break-all">krishacharitabletrustcbe@gmail.com</span>
+                    </div>
                 </div>
 
 
@@ -156,56 +157,120 @@ get_header();
 
 
 
+    <section class="my-12">
+        <div class="max-w-4xl mx-auto p-6 bg-white border border-gray-200 shadow rounded-lg">
+            <h1 class="text-2xl font-bold text-orange-600 mb-6">KRISHA CHARITABLE TRUST</h1>
+
+            <!-- NPO Details -->
+            <div class="bg-red-50 p-4 rounded-md mb-6">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">NPO Details</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <p class="text-gray-600 font-medium">DARPAN ID</p>
+                        <p class="font-bold text-gray-800">TN/2024/0425835</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-600 font-medium">DARPAN Registration Date</p>
+                        <p class="font-bold text-gray-800">25–06–2024</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Registration Details -->
+            <div class="bg-yellow-50 p-4 rounded-md">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">Registration Details</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <p class="text-gray-600 font-medium">Registered With</p>
+                        <p class="font-bold text-gray-800">Sub-Registrar</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-600 font-medium">Type of NPO</p>
+                        <p class="font-bold text-gray-800">Trust (Non-Government)</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-600 font-medium">Registration No</p>
+                        <p class="font-bold text-gray-800">781/1998</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-600 font-medium">Act name</p>
+                        <p class="font-bold text-gray-800">The Indian Trusts Act, 1882</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-600 font-medium">City of Registration</p>
+                        <p class="font-bold text-gray-800">COIMBATORE</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-600 font-medium">State of Registration</p>
+                        <p class="font-bold text-gray-800">Tamil Nadu</p>
+                    </div>
+                    <div>
+                        <p class="text-gray-600 font-medium">Date of Registration (Society / Trust / Entity)</p>
+                        <p class="font-bold text-gray-800">04–09–1998</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+   
+
+
+
+
+
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
-document.getElementById("contact-form").addEventListener("submit", function(event) {
-    event.preventDefault();
+    document.getElementById("contact-form").addEventListener("submit", function(event) {
+        event.preventDefault();
 
-    const apiEndpoint =
-        "https://krishatrust.org/wp-json/contact-form-7/v1/contact-forms/46/feedback";
-    const formData = new FormData();
+        const apiEndpoint =
+            "https://krishatrust.org/wp-json/contact-form-7/v1/contact-forms/46/feedback";
+        const formData = new FormData();
 
-    formData.append("your-name", document.getElementById("your-name").value);
-    formData.append("your-phone", document.getElementById("your-phone").value);
-    formData.append("your-email", document.getElementById("your-email").value);
-    formData.append("your-message", document.getElementById("your-message").value);
-    formData.append("_wpcf7_unit_tag", "wpcf7-f46-o1"); // Replace with actual unit tag if needed
+        formData.append("your-name", document.getElementById("your-name").value);
+        formData.append("your-phone", document.getElementById("your-phone").value);
+        formData.append("your-email", document.getElementById("your-email").value);
+        formData.append("your-message", document.getElementById("your-message").value);
+        formData.append("_wpcf7_unit_tag", "wpcf7-f46-o1"); // Replace with actual unit tag if needed
 
-    fetch(apiEndpoint, {
-            method: "POST",
-            body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.status === "mail_sent") {
-                Swal.fire({
-                    icon: "success",
-                    title: "Success!",
-                    text: "Your message has been sent successfully!",
-                });
+        fetch(apiEndpoint, {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === "mail_sent") {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Success!",
+                        text: "Your message has been sent successfully!",
+                    });
 
-                // Reset the form after submission
-                document.getElementById("contact-form").reset();
-            } else {
+                    // Reset the form after submission
+                    document.getElementById("contact-form").reset();
+                } else {
+                    Swal.fire({
+                        icon: "error",
+                        title: "Oops...",
+                        text: "Something went wrong. Please try again.",
+                    });
+                }
+            })
+            .catch(error => {
+                console.error("Error:", error);
                 Swal.fire({
                     icon: "error",
                     title: "Oops...",
-                    text: "Something went wrong. Please try again.",
+                    text: "Failed to submit the form. Please try again later.",
                 });
-            }
-        })
-        .catch(error => {
-            console.error("Error:", error);
-            Swal.fire({
-                icon: "error",
-                title: "Oops...",
-                text: "Failed to submit the form. Please try again later.",
             });
-        });
-});
+    });
 </script>
 
 

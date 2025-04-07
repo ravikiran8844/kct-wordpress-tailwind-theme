@@ -2,7 +2,7 @@
 /*
 Template Name: Home Page
 */
-get_header('alt'); ?>
+get_header(); ?>
 <!-- This loads header-alt.php -->
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -10,24 +10,27 @@ get_header('alt'); ?>
 <main class="min-h-screen">
 
 
+    <?php
+// Get ACF image fields
+$desktop_banner = get_field('desktop_banner'); 
+$mobile_banner = get_field('mobile_banner'); 
+
+// Check if images exist; provide a fallback
+$desktop_banner_url = ($desktop_banner && isset($desktop_banner['url'])) ? esc_url($desktop_banner['url']) : 'wp-content/uploads/2025/03/banner_1.webp';
+$mobile_banner_url = ($mobile_banner && isset($mobile_banner['url'])) ? esc_url($mobile_banner['url']) : 'wp-content/uploads/2025/03/mob_banner.webp';
+?>
+
     <section>
         <a href="#about-us">
             <picture>
-                <source media="(min-width:768px)" srcset="wp-content/uploads/2025/03/banner_1.webp">
-                <source media="(max-width:768px)" srcset="wp-content/uploads/2025/03/mob_banner.webp">
-                <img src="wp-content/uploads/2025/03/banner_1.webp" alt="Main Banner"
-                    class="w-full h-auto object-cover">
+                <source media="(min-width:768px)" srcset="<?php echo $desktop_banner_url; ?>">
+                <source media="(max-width:768px)" srcset="<?php echo $mobile_banner_url; ?>">
+                <img src="<?php echo $desktop_banner_url; ?>" alt="Main Banner" class="w-full h-auto object-cover">
             </picture>
         </a>
-
-        <!-- <div class="absolute top-0 left-0 w-full h-full flex justify-center md:justify-start items-center text-center md:text-start gap-4 p-4 py-8 lg:p-12 xl:p-16 before:content-[''] before:absolute before:inset-0 before:bg-black before:bg-opacity-50 before:z-[-1]">
-            <div class="space-y-6">
-                <div class="text-white text-2xl lg:text-4xl font-bold drop-shadow-lg">BUILDING A BRIGHTER FUTURE</div>
-                <div class="text-white text-xl lg:text-2xl font-medium drop-shadow-md">One Initiative at a time….</div>
-
-            </div>
-        </div> -->
     </section>
+
+
 
 
 
@@ -35,20 +38,17 @@ get_header('alt'); ?>
 
     <section>
         <div class="grid lg:grid-cols-3">
-
-
-            <div class="text-white relative flex justify-center items-center h-full">
+            <!-- Card 1 -->
+            <div class="text-white relative flex flex-col h-full">
                 <img loading="lazy" class="w-full h-64 lg:h-84 object-cover"
                     src="wp-content/uploads/2025/03/section2-bg3.webp" alt="">
                 <div
-                    class="absolute top-0 left-0 w-full h-full z-1 flex justify-center flex-col items-center text-center gap-4 p-4 py-8 lg:p-12 xl:p-16">
-                    <div class="text-2xl lg:text-3xl font-semibold ">EDUCATION
-                    </div>
-                    <div class="text-base">
+                    class="absolute top-0 left-0 w-full h-full z-1 flex flex-col items-center text-center gap-4 p-4 py-8 sm:p-8 lg:p-12 xl:p-16">
+                    <div class="text-2xl lg:text-3xl font-semibold flex-grow">EDUCATION</div>
+                    <div class="text-base flex-grow max-w-md mx-auto">
                         Transforming Government Schools into Child-Friendly Hubs.
-
                     </div>
-                    <div class="mt-2">
+                    <div class="mt-auto pb-4">
                         <a href="#"
                             class="cursor-pointer font-medium border-white border hover:bg-white hover:text-[#F78D1E] px-4 py-2 rounded-md">
                             Know More
@@ -57,47 +57,37 @@ get_header('alt'); ?>
                 </div>
             </div>
 
-
-            <div class="text-white relative flex justify-center items-center h-full">
-
-                <img loading="lazy" class="w-full  h-64 lg:h-84 object-cover"
+            <!-- Card 2 -->
+            <div class="text-white relative flex flex-col h-full">
+                <img loading="lazy" class="w-full h-64 lg:h-84 object-cover"
                     src="wp-content/uploads/2025/03/section2-bg2.webp" alt="health care">
-
                 <div
-                    class="absolute top-0 left-0 w-full h-full z-1 flex justify-center flex-col items-center text-center gap-4 p-4 py-8 lg:p-12 xl:p-16">
-                    <div class="text-2xl lg:text-3xl font-semibold ">HEALTH CARE
-
-                    </div>
-                    <div class="text-base">
+                    class="absolute top-0 left-0 w-full h-full z-1 flex flex-col items-center text-center gap-4 p-4 py-8 sm:p-8 lg:p-12 xl:p-16">
+                    <div class="text-2xl lg:text-3xl font-semibold flex-grow">HEALTH CARE</div>
+                    <div class="text-base flex-grow max-w-md mx-auto">
                         Providing state-of-the-art healthcare available for everyone!
-
                     </div>
-
-                    <div class="mt-2">
-                        <a href="https://emeraldhealthcenter.com"
-                            class="cursor-pointer font-medium border-white border hover:bg-white hover:text-[#F78D1E] px-4 py-2 rounded-md"
-                            target="_blank">
+                    <div class="mt-auto pb-4">
+                        <a href="https://emeraldhealthcenter.com" target="_blank"
+                            class="cursor-pointer font-medium border-white border hover:bg-white hover:text-[#F78D1E] px-4 py-2 rounded-md">
                             Know More
                         </a>
                     </div>
                 </div>
             </div>
 
-
-
-            <div class="text-white relative flex justify-center items-center h-full">
-                <img loading="lazy" class="w-full  h-64 lg:h-84 object-cover"
+            <!-- Card 3 -->
+            <div class="text-white relative flex flex-col h-full">
+                <img loading="lazy" class="w-full h-64 lg:h-84 object-cover"
                     src="wp-content/uploads/2025/03/section2-bg1.webp" alt="">
                 <div
-                    class="absolute top-0 left-0 w-full h-full z-1 flex justify-center flex-col items-center text-center gap-4 p-4 py-8 lg:p-12 xl:p-16">
-                    <div class="text-2xl lg:text-3xl font-semibold ">RURAL DEVELOPMENT
+                    class="absolute top-0 left-0 w-full h-full z-1 flex flex-col items-center text-center gap-4 p-4 py-8 sm:p-8 lg:p-12 xl:p-16">
+                    <div class="text-2xl lg:text-3xl font-semibold flex-grow">RURAL DEVELOPMENT</div>
+                    <div class="text-base flex-grow max-w-md mx-auto">
+                        Empowering women with skills & providing free education for orphans, single-parent kids,
+                        marginalized, tribal, & dropout students.
                     </div>
-                    <div class="text-base">
-                        From Skill Training for Women empowerment to providing free education for orphans, children with
-                        a single parent, marginalised, dropouts, tribal students and dropouts.
-
-                    </div>
-                    <div class="mt-2">
+                    <div class="mt-auto pb-4">
                         <a href="#"
                             class="cursor-pointer font-medium border-white border hover:bg-white hover:text-[#F78D1E] px-4 py-2 rounded-md">
                             Know More
@@ -109,8 +99,10 @@ get_header('alt'); ?>
     </section>
 
 
+
+
     <section class="bg-white" id="about-us">
-        <div class="p-4 py-8 lg:p-12 xl:p-16">
+        <div class="p-4 py-8 sm:p-8 lg:p-12 xl:p-16">
             <div class="grid lg:grid-cols-2 gap-10">
                 <div>
                     <img loading="lazy" src="wp-content/uploads/2025/03/about-us.webp"
@@ -184,11 +176,11 @@ get_header('alt'); ?>
                         </li>
                     </ul> -->
 
-                    <div class="grid grid-cols-1 gap-5 lg:grid-cols-2">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                         <div
-                            class="border border-[#E5E5E5] p-4 rounded-xl grid grid-cols-[50px_1fr] gap-4 justify-items-center items-center">
+                            class="border border-[#E5E5E5] p-4 rounded-xl grid grid-cols-[40px_1fr] gap-4 justify-items-center items-center">
                             <div>
-                                <svg viewBox="0 0 57 35" fill="none" class="h-8" xmlns="http://www.w3.org/2000/svg">
+                                <svg viewBox="0 0 57 35" fill="none" class="h-7 w-7" xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="M26.6707 22.5128C26.5321 22.5128 26.3934 22.4861 26.2627 22.4354L0.889882 12.27C0.473887 12.1047 0.201904 11.7021 0.201904 11.2567C0.201904 10.8087 0.473901 10.4087 0.889882 10.2434L26.2655 0.0779965C26.5268 -0.0259988 26.8174 -0.0259988 27.0788 0.0779965L52.4543 10.2434C52.8677 10.4087 53.1397 10.8087 53.1397 11.2567C53.1397 11.702 52.8677 12.1047 52.4543 12.27L27.0788 22.4354C26.9481 22.4861 26.8094 22.5128 26.6707 22.5128ZM4.23124 11.2572L26.6707 20.2436L49.1102 11.2572L26.6707 2.27073L4.23124 11.2572Z"
                                         fill="black" />
@@ -213,9 +205,9 @@ get_header('alt'); ?>
                         </div>
 
                         <div
-                            class="border border-[#E5E5E5] p-4 rounded-xl grid grid-cols-[50px_1fr] gap-4 justify-items-center items-center">
+                            class="border border-[#E5E5E5] p-4 rounded-xl grid grid-cols-[40px_1fr] gap-4 justify-items-center items-center">
                             <div>
-                                <svg class="h-8" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg class="h-7 w-7" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="M45.6941 19.7377L42.7783 18.7918C42.628 18.7417 42.5353 18.6434 42.4945 18.4932C42.0456 16.7831 41.3649 15.1417 40.4709 13.6117C40.393 13.4763 40.3874 13.3428 40.4579 13.2055L41.8527 10.4698C42.2311 9.7261 42.0939 8.86366 41.504 8.27201L38.7291 5.49733C38.1485 4.91309 37.2657 4.77216 36.533 5.14679L33.7952 6.54154C33.658 6.61202 33.5244 6.6083 33.3909 6.53041C31.8587 5.63459 30.2154 4.95206 28.509 4.50508C28.3569 4.46427 28.2605 4.37339 28.2122 4.22502L27.2626 1.30757C27.0103 0.524898 26.2869 0 25.4633 0H21.5366C20.7131 0 19.9897 0.524898 19.7374 1.30572L18.7877 4.22687C18.7395 4.37525 18.643 4.46613 18.4928 4.50693C16.7845 4.95392 15.1411 5.63644 13.609 6.53226C13.4736 6.61016 13.3419 6.61572 13.2028 6.54339L10.4669 5.14865C9.7324 4.774 8.84952 4.9131 8.27078 5.49548L5.49405 8.272C4.9042 8.86181 4.76697 9.72424 5.14533 10.4698L6.53833 13.2018C6.60882 13.3428 6.6051 13.4763 6.5272 13.6117C5.63317 15.14 4.95243 16.7833 4.50542 18.4913C4.46461 18.6434 4.37187 18.7417 4.22534 18.7899L1.30396 19.7377C0.511927 19.9973 0 20.704 0 21.5349V25.4613C0 26.283 0.524938 27.0063 1.30582 27.2623L4.22534 28.21C4.37373 28.2582 4.46461 28.3547 4.50542 28.5049C4.95244 30.2113 5.63317 31.8545 6.52905 33.3883C6.60696 33.5218 6.61067 33.6554 6.54204 33.7926L5.14719 36.5302C4.7688 37.2739 4.90606 38.1363 5.4959 38.728L8.27264 41.5045C8.85508 42.0869 9.73795 42.226 10.4669 41.8532L13.2047 40.4585C13.3457 40.3861 13.4736 40.3898 13.609 40.4696C15.1412 41.3636 16.7827 42.0442 18.4947 42.4949C18.6431 42.5339 18.7395 42.6248 18.7878 42.775L19.7356 45.6887C19.9879 46.4732 20.7113 47 21.5348 47H25.4615C26.2869 47 27.0103 46.4733 27.2608 45.6924L28.2123 42.7731C28.2605 42.6248 28.3551 42.5339 28.5035 42.4968C28.5054 42.4968 28.5054 42.4968 28.5072 42.4949C30.2156 42.0442 31.8589 41.3636 33.391 40.4696C33.5264 40.3898 33.6544 40.3861 33.7953 40.4585L36.5312 41.8532C37.2621 42.2279 38.1449 42.0869 38.7274 41.5045L41.5041 38.728C42.094 38.1382 42.2312 37.2758 41.8528 36.5302L40.4598 33.7963C40.3893 33.6554 40.393 33.5237 40.4728 33.3883C41.3687 31.8544 42.0476 30.2112 42.4946 28.5068C42.5354 28.3547 42.6263 28.2583 42.7747 28.21L45.696 27.2623C46.4769 27.0063 47 26.283 47 25.4613V21.5349C47 20.704 46.488 19.9974 45.6941 19.7377ZM45.5327 25.4634C45.5327 25.6563 45.4233 25.8084 45.2415 25.8696L42.322 26.8173C41.6988 27.0195 41.2444 27.4999 41.0755 28.136C40.6619 29.7125 40.0331 31.2334 39.2059 32.6504C38.8757 33.2142 38.8553 33.8745 39.1521 34.4624L40.5469 37.2C40.6341 37.3725 40.6044 37.5579 40.469 37.6934L37.6923 40.4699C37.5587 40.6034 37.3695 40.6349 37.2007 40.5478L34.463 39.153C33.8768 38.8544 33.2165 38.873 32.6508 39.2031C31.2337 40.0285 29.7145 40.6591 28.1342 41.0764C27.498 41.2414 27.0157 41.6958 26.8154 42.3209L25.8639 45.2402C25.8064 45.4238 25.6543 45.5314 25.4614 45.5314H21.5347C21.3418 45.5314 21.1915 45.4219 21.1322 45.2365L20.1825 42.3209C19.9803 41.6921 19.4981 41.2377 18.8637 41.0727C17.2834 40.6553 15.7643 40.0266 14.3472 39.1994C14.0485 39.0251 13.7221 38.936 13.3956 38.936C13.1044 38.936 12.8113 39.0065 12.535 39.1475L9.79537 40.5422C9.62844 40.6275 9.4411 40.5979 9.30571 40.4643L6.52898 37.6878C6.39172 37.5505 6.36389 37.3669 6.45108 37.1944L7.84778 34.4532C8.1427 33.8671 8.1223 33.2087 7.79213 32.6448C6.96486 31.226 6.33422 29.707 5.92059 28.1268C5.75179 27.4925 5.29921 27.0121 4.67598 26.8099L1.75831 25.864C1.57468 25.8028 1.46524 25.6526 1.46524 25.4578V21.5314C1.46524 21.3385 1.57468 21.1883 1.75645 21.129L4.67968 20.1812C5.30106 19.9753 5.75363 19.495 5.92058 18.8625C6.33607 17.2823 6.96486 15.7633 7.79027 14.35C8.12044 13.7843 8.14084 13.1241 7.84406 12.5342L6.44921 9.80041C6.36204 9.62792 6.39172 9.44245 6.52712 9.30704L9.3057 6.52866C9.4374 6.39512 9.62474 6.36545 9.79536 6.45262L12.5331 7.84736C13.1174 8.14597 13.7777 8.12742 14.3453 7.79542C15.7624 6.96637 17.2815 6.33763 18.8619 5.92217C19.4962 5.75339 19.9766 5.30084 20.1788 4.67766L21.1303 1.75651C21.1878 1.57475 21.3399 1.46717 21.5328 1.46717H25.4595C25.6524 1.46717 25.8027 1.5766 25.862 1.75836L26.8117 4.67766C27.0139 5.30084 27.4943 5.75523 28.1305 5.92402C29.7108 6.33762 31.2299 6.96822 32.6471 7.79728C33.2146 8.12741 33.875 8.14597 34.4574 7.84735L37.197 6.45261C37.3658 6.36729 37.5513 6.39697 37.6867 6.53051L40.4634 9.30703C40.6007 9.44428 40.6285 9.6279 40.5413 9.8004L39.1446 12.5379C38.8497 13.124 38.8701 13.7843 39.2002 14.35C40.0257 15.7633 40.6563 17.2823 41.0718 18.8644C41.2387 19.4968 41.6913 19.9772 42.3164 20.183L45.2341 21.1289C45.4177 21.1902 45.5271 21.3404 45.5271 21.5333L45.5327 25.4634ZM23.501 9.7872C15.9387 9.7872 9.78613 15.9393 9.78613 23.501C9.78613 27.1752 11.2403 30.5172 13.6016 32.9824C13.6387 33.0325 13.6851 33.0789 13.7333 33.1178C15.0317 34.4365 16.5953 35.4937 18.3352 36.2041C18.3686 36.2208 18.4038 36.2356 18.439 36.2467C20.0064 36.8718 21.7128 37.2149 23.499 37.2149C25.2907 37.2149 27.0028 36.8681 28.5741 36.2412C28.6019 36.2319 28.6279 36.2208 28.6538 36.2096C30.3993 35.4993 31.9666 34.4384 33.2687 33.116C33.317 33.0789 33.3578 33.0344 33.3949 32.9862C35.758 30.5213 37.2122 27.1793 37.2122 23.501C37.2122 15.9392 31.0614 9.7872 23.501 9.7872ZM32.0776 32.2313C31.1947 33.0993 30.1819 33.8338 29.0728 34.405V21.1589H32.0776V32.2313ZM27.6037 35.0393C27.0231 35.2471 26.424 35.4103 25.8082 35.529V31.9419C25.8082 31.5358 25.4799 31.2075 25.0737 31.2075H21.9223C21.5161 31.2075 21.1878 31.5358 21.1878 31.9419V35.529C20.5719 35.4103 19.971 35.247 19.3923 35.0393V16.2028H27.6018L27.6037 35.0393ZM17.925 34.4032C16.8139 33.8338 15.8011 33.0975 14.9201 32.2295V21.1589H17.925V34.4032ZM22.6567 35.7182V32.6746H24.3409V35.7182C24.0627 35.7367 23.7826 35.7478 23.5007 35.7478C23.2169 35.7478 22.9349 35.7367 22.6567 35.7182ZM33.5448 30.4953V20.4261C33.5448 20.0199 33.2165 19.6916 32.8103 19.6916H29.0709V15.4684C29.0709 15.0623 28.7426 14.734 28.3364 14.734H18.6596C18.2533 14.734 17.925 15.0623 17.925 15.4684V19.6916H14.1856C13.7794 19.6916 13.4511 20.0199 13.4511 20.4261V30.4953C12.0655 28.5108 11.2513 26.0996 11.2513 23.5028C11.2513 16.7497 16.7452 11.2562 23.4989 11.2562C30.2507 11.2562 35.7427 16.7497 35.7427 23.5028C35.7445 26.0995 34.9304 28.5106 33.5448 30.4953ZM20.0284 18.1171C20.0284 17.7109 20.3567 17.3826 20.763 17.3826H21.0542C21.4604 17.3826 21.7887 17.7109 21.7887 18.1171C21.7887 18.5233 21.4604 18.8516 21.0542 18.8516H20.763C20.3568 18.8516 20.0284 18.5233 20.0284 18.1171ZM22.6178 18.1171C22.6178 17.7109 22.9461 17.3826 23.3523 17.3826H23.6454C24.0516 17.3826 24.3799 17.7109 24.3799 18.1171C24.3799 18.5233 24.0516 18.8516 23.6454 18.8516H23.3523C22.9461 18.8516 22.6178 18.5233 22.6178 18.1171ZM25.2109 18.1171C25.2109 17.7109 25.5392 17.3826 25.9454 17.3826H26.2366C26.6428 17.3826 26.9711 17.7109 26.9711 18.1171C26.9711 18.5233 26.6428 18.8516 26.2366 18.8516H25.9454C25.5392 18.8516 25.2109 18.5233 25.2109 18.1171ZM20.0284 20.94C20.0284 20.5338 20.3567 20.2055 20.763 20.2055H21.0542C21.4604 20.2055 21.7887 20.5338 21.7887 20.94C21.7887 21.3462 21.4604 21.6744 21.0542 21.6744H20.763C20.3568 21.6744 20.0284 21.3462 20.0284 20.94ZM22.6178 20.94C22.6178 20.5338 22.9461 20.2055 23.3523 20.2055H23.6454C24.0516 20.2055 24.3799 20.5338 24.3799 20.94C24.3799 21.3462 24.0516 21.6744 23.6454 21.6744H23.3523C22.9461 21.6744 22.6178 21.3462 22.6178 20.94ZM25.2109 20.94C25.2109 20.5338 25.5392 20.2055 25.9454 20.2055H26.2366C26.6428 20.2055 26.9711 20.5338 26.9711 20.94C26.9711 21.3462 26.6428 21.6744 26.2366 21.6744H25.9454C25.5392 21.6744 25.2109 21.3462 25.2109 20.94ZM20.0284 23.7647C20.0284 23.3585 20.3567 23.0302 20.763 23.0302H21.0542C21.4604 23.0302 21.7887 23.3585 21.7887 23.7647C21.7887 24.1709 21.4604 24.4992 21.0542 24.4992H20.763C20.3568 24.4973 20.0284 24.169 20.0284 23.7647ZM22.6178 23.7647C22.6178 23.3585 22.9461 23.0302 23.3523 23.0302H23.6454C24.0516 23.0302 24.3799 23.3585 24.3799 23.7647C24.3799 24.1709 24.0516 24.4992 23.6454 24.4992L23.3523 24.4973C22.9461 24.4973 22.6178 24.169 22.6178 23.7647ZM25.2109 23.7647C25.2109 23.3585 25.5392 23.0302 25.9454 23.0302H26.2366C26.6428 23.0302 26.9711 23.3585 26.9711 23.7647C26.9711 24.1709 26.6428 24.4992 26.2366 24.4992H25.9454C25.5392 24.4973 25.2109 24.169 25.2109 23.7647ZM20.0284 26.5876C20.0284 26.1814 20.3567 25.8531 20.763 25.8531H21.0542C21.4604 25.8531 21.7887 26.1814 21.7887 26.5876C21.7887 26.9937 21.4604 27.322 21.0542 27.322H20.763C20.3568 27.322 20.0284 26.9919 20.0284 26.5876ZM22.6178 26.5876C22.6178 26.1814 22.9461 25.8531 23.3523 25.8531H23.6454C24.0516 25.8531 24.3799 26.1814 24.3799 26.5876C24.3799 26.9937 24.0516 27.322 23.6454 27.322H23.3523C22.9461 27.322 22.6178 26.9919 22.6178 26.5876ZM25.2109 26.5876C25.2109 26.1814 25.5392 25.8531 25.9454 25.8531H26.2366C26.6428 25.8531 26.9711 26.1814 26.9711 26.5876C26.9711 26.9937 26.6428 27.322 26.2366 27.322H25.9454C25.5392 27.322 25.2109 26.9919 25.2109 26.5876ZM20.0284 29.4104C20.0284 29.0042 20.3567 28.6759 20.763 28.6759H21.0542C21.4604 28.6759 21.7887 29.0042 21.7887 29.4104C21.7887 29.8166 21.4604 30.1449 21.0542 30.1449H20.763C20.3568 30.1449 20.0284 29.8166 20.0284 29.4104ZM22.6178 29.4104C22.6178 29.0042 22.9461 28.6759 23.3523 28.6759H23.6454C24.0516 28.6759 24.3799 29.0042 24.3799 29.4104C24.3799 29.8166 24.0516 30.1449 23.6454 30.1449H23.3523C22.9461 30.1449 22.6178 29.8166 22.6178 29.4104ZM25.2109 29.4104C25.2109 29.0042 25.5392 28.6759 25.9454 28.6759H26.2366C26.6428 28.6759 26.9711 29.0042 26.9711 29.4104C26.9711 29.8166 26.6428 30.1449 26.2366 30.1449H25.9454C25.5392 30.1449 25.2109 29.8166 25.2109 29.4104Z"
                                         fill="black" />
@@ -230,9 +222,9 @@ get_header('alt'); ?>
 
 
                         <div
-                            class="border border-[#E5E5E5] p-4 rounded-xl grid grid-cols-[50px_1fr] gap-4 justify-items-center items-center">
+                            class="border border-[#E5E5E5] p-4 rounded-xl grid grid-cols-[40px_1fr] gap-4 justify-items-center items-center">
                             <div>
-                                <svg class="h-8" viewBox="0 0 50 45" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg class="h-7 w-7" viewBox="0 0 50 45" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="M0.0306828 16.3571C0.0490454 16.6631 0.18823 16.9493 0.417619 17.1527C0.647008 17.3561 0.94781 17.4601 1.25385 17.4418C1.55989 17.4234 1.84611 17.2842 2.04953 17.0548C2.25295 16.8254 2.35691 16.5246 2.33855 16.2186C2.2198 14.3683 2.48842 12.5136 3.12723 10.773C3.76603 9.03245 4.76097 7.44432 6.04845 6.11013C7.21973 4.90231 8.62254 3.94308 10.173 3.28979C11.7235 2.63649 13.3897 2.30255 15.0722 2.30792C17.6397 2.30792 20.738 3.99843 24.021 7.19482C24.2626 7.43232 24.5879 7.5654 24.9268 7.5654C25.2656 7.5654 25.5909 7.43232 25.8326 7.19482C28.4838 4.48502 32.0931 2.92483 35.8834 2.85026H35.9699C37.4238 2.83836 38.8651 3.12107 40.2067 3.68133C41.5484 4.2416 42.7626 5.0678 43.7763 6.11013C46.1639 8.60649 47.4964 11.9277 47.4964 15.382C47.4964 18.8363 46.1639 22.1575 43.7763 24.6538L25.2326 42.5398C25.1365 42.6346 25.007 42.6877 24.872 42.6877C24.737 42.6877 24.6075 42.6346 24.5114 42.5398L11.8181 30.2793C11.709 30.1739 11.5802 30.0911 11.4391 30.0356C11.298 29.98 11.1474 29.9528 10.9957 29.9555C10.6895 29.9609 10.398 30.0878 10.1853 30.3081C9.9726 30.5285 9.85614 30.8243 9.86155 31.1305C9.86696 31.4367 9.99379 31.7282 10.2141 31.9409L22.9074 44.2015C23.4331 44.7136 24.1381 45.0001 24.872 45.0001C25.6059 45.0001 26.3108 44.7136 26.8366 44.2015L45.4495 26.2867C48.2663 23.3586 49.8397 19.4536 49.8397 15.3906C49.8397 11.3277 48.2663 7.42264 45.4495 4.49462C44.2249 3.23179 42.7572 2.23006 41.1349 1.54981C39.5126 0.869573 37.7694 0.524917 36.0103 0.536628C31.9057 0.556826 27.9545 2.09867 24.921 4.86388C21.4073 1.6271 18.0955 4.88259e-05 15.0722 4.88259e-05C13.0815 -0.00506361 11.1102 0.391357 9.27616 1.1656C7.44216 1.93985 5.78314 3.07602 4.39832 4.50616C2.88618 6.06915 1.71672 7.93041 0.964665 9.97098C0.212613 12.0116 -0.10549 14.1866 0.0306828 16.3571Z"
                                         fill="black" />
@@ -248,9 +240,9 @@ get_header('alt'); ?>
                         </div>
 
                         <div
-                            class="border border-[#E5E5E5] p-4 rounded-xl grid grid-cols-[50px_1fr] gap-4 justify-items-center items-center">
+                            class="border border-[#E5E5E5] p-4 rounded-xl grid grid-cols-[40px_1fr] gap-4 justify-items-center items-center">
                             <div>
-                                <svg class="h-8" viewBox="0 0 42 54" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <svg class="h-7 w-7" viewBox="0 0 42 54" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path
                                         d="M3.98371e-06 38.516V47.7202C0.00214036 49.3851 0.664438 50.9811 1.84165 52.1583C3.01886 53.3355 4.61489 53.9978 6.27972 54H34.987C36.6518 53.9978 38.2478 53.3355 39.4251 52.1583C40.6023 50.9811 41.2646 49.3851 41.2667 47.7202V38.516C41.269 35.6453 40.2116 32.8748 38.2971 30.7357C36.3827 28.5966 33.746 27.2395 30.8926 26.9245L25.2875 26.3019C25.6975 26.0328 26.0824 25.7637 26.4349 25.5161C26.6601 25.3573 26.8736 25.2066 27.0737 25.072C27.7789 24.5932 28.3796 23.9764 28.8396 23.2587C29.2996 22.5411 29.6092 21.7376 29.7497 20.8969L30.0188 19.2713C30.6704 19.0995 31.247 18.717 31.6587 18.1836C32.0705 17.6501 32.2944 16.9956 32.2957 16.3217V11.8362C32.2957 8.74312 31.067 5.77676 28.8799 3.58965C26.6928 1.40253 23.7264 0.173828 20.6334 0.173828C17.5403 0.173828 14.574 1.40253 12.3868 3.58965C10.1997 5.77676 8.97103 8.74312 8.97103 11.8362V16.3217C8.97192 16.9954 9.19537 17.6499 9.60663 18.1835C10.0179 18.7171 10.5939 19.0998 11.2452 19.2722L11.5143 20.8978C11.6549 21.7383 11.9645 22.5415 12.4243 23.2589C12.8841 23.9764 13.4846 24.5932 14.1895 25.072C14.3904 25.2066 14.6039 25.3573 14.8291 25.5161C15.1817 25.7646 15.5665 26.0346 15.9765 26.3019L10.3714 26.9245C7.51853 27.2401 4.88249 28.5975 2.9686 30.7365C1.05471 32.8755 -0.00236814 35.6457 3.98371e-06 38.516ZM8.07393 47.7202V33.3666C8.07393 33.1287 8.16844 32.9005 8.33668 32.7323C8.50492 32.564 8.7331 32.4695 8.97103 32.4695H32.2957C32.5336 32.4695 32.7618 32.564 32.93 32.7323C33.0983 32.9005 33.1928 33.1287 33.1928 33.3666V47.7202C33.1928 47.9582 33.0983 48.1864 32.93 48.3546C32.7618 48.5228 32.5336 48.6174 32.2957 48.6174H8.97103C8.7331 48.6174 8.50492 48.5228 8.33668 48.3546C8.16844 48.1864 8.07393 47.9582 8.07393 47.7202ZM17.942 27.984V27.3731C18.7822 27.7753 19.7019 27.984 20.6334 27.984C21.5648 27.984 22.4845 27.7753 23.3247 27.3731V27.984C23.3247 28.6978 23.0411 29.3823 22.5364 29.887C22.0317 30.3918 21.3471 30.6753 20.6334 30.6753C19.9196 30.6753 19.235 30.3918 18.7303 29.887C18.2256 29.3823 17.942 28.6978 17.942 27.984ZM8.07393 52.2058V50.4116H33.1928V52.2058H8.07393ZM39.4725 38.516V47.7202C39.4711 48.9094 38.998 50.0495 38.1572 50.8904C37.3163 51.7313 36.1762 52.2043 34.987 52.2058V50.4116C34.9855 49.9724 34.8215 49.5493 34.5268 49.2238C34.8273 48.78 34.9877 48.2562 34.987 47.7202V33.3666C34.987 32.6528 34.7034 31.9683 34.1987 31.4636C33.694 30.9589 33.0095 30.6753 32.2957 30.6753H24.1984C24.7674 29.9307 25.0859 29.0249 25.1081 28.0881L30.6944 28.7089C33.1087 28.975 35.3398 30.1231 36.9598 31.9329C38.5798 33.7428 39.4745 36.087 39.4725 38.516ZM13.6512 4.85401C15.0325 3.47525 16.7914 2.53673 18.7057 2.15698C20.6201 1.77723 22.604 1.97328 24.407 2.72038C26.21 3.46747 27.7512 4.7321 28.8359 6.35455C29.9206 7.97701 30.5002 9.88451 30.5015 11.8362V13.5407C30.3626 13.4764 30.2189 13.423 30.0718 13.381C29.9773 12.673 29.6641 12.0123 29.176 11.4909C28.6879 10.9695 28.0492 10.6135 27.3491 10.4726C25.366 10.224 23.4542 9.57418 21.7305 8.56263C21.4025 8.35428 21.0219 8.24364 20.6334 8.24364C20.2448 8.24364 19.8642 8.35428 19.5362 8.56263C17.8127 9.57402 15.9013 10.2239 13.9185 10.4726C13.2182 10.6133 12.5793 10.9693 12.0911 11.4907C11.6028 12.0121 11.2895 12.6729 11.1949 13.381C11.0478 13.423 10.9041 13.4764 10.7652 13.5407V11.8362C10.7608 10.5393 11.0136 9.25453 11.509 8.05605C12.0043 6.85758 12.7325 5.76924 13.6512 4.85401ZM15.1951 23.5882C14.6921 23.2457 14.2636 22.8048 13.9357 22.2921C13.6077 21.7795 13.387 21.2056 13.287 20.6053L12.9066 18.3303C12.8723 18.1202 12.7645 17.9291 12.6022 17.7912C12.44 17.6533 12.2341 17.5776 12.0212 17.5776C11.6881 17.5776 11.3686 17.4453 11.1331 17.2098C10.8976 16.9742 10.7652 16.6548 10.7652 16.3217C10.7652 15.9886 10.8976 15.6691 11.1331 15.4336C11.3686 15.198 11.6881 15.0657 12.0212 15.0657C12.2591 15.0657 12.4873 14.9712 12.6555 14.803C12.8238 14.6347 12.9183 14.4066 12.9183 14.1686C12.8768 13.754 12.979 13.3376 13.2075 12.9892C13.4361 12.6408 13.7774 12.3813 14.1742 12.2542C16.4063 11.9688 18.5568 11.2313 20.4943 10.0868C20.5358 10.0577 20.5853 10.042 20.636 10.042C20.6868 10.042 20.7363 10.0577 20.7778 10.0868C22.7136 11.2307 24.8622 11.9681 27.0925 12.2542C27.4894 12.3813 27.8306 12.6408 28.0592 12.9892C28.2878 13.3376 28.3899 13.754 28.3484 14.1686C28.3484 14.2864 28.3716 14.4031 28.4167 14.5119C28.4618 14.6208 28.5279 14.7197 28.6112 14.803C28.6945 14.8863 28.7934 14.9524 28.9022 14.9974C29.0111 15.0425 29.1277 15.0657 29.2455 15.0657C29.5786 15.0657 29.8981 15.198 30.1336 15.4336C30.3692 15.6691 30.5015 15.9886 30.5015 16.3217C30.5015 16.6548 30.3692 16.9742 30.1336 17.2098C29.8981 17.4453 29.5786 17.5776 29.2455 17.5776C29.0332 17.5775 28.8276 17.6527 28.6655 17.7898C28.5034 17.927 28.3951 18.1172 28.3601 18.3267L27.9797 20.6017C27.8801 21.2028 27.6596 21.7774 27.3314 22.2907C27.0033 22.8041 26.5744 23.2455 26.0707 23.5882C25.8608 23.7299 25.6365 23.8878 25.4006 24.0538C24.0495 25.0038 22.3675 26.1898 20.6334 26.1898C18.8993 26.1898 17.2172 25.0038 15.8662 24.0502C15.6302 23.8842 15.4059 23.7264 15.1951 23.5882ZM16.1586 28.0917C16.1816 29.0273 16.5 29.9317 17.0683 30.6753H8.97103C8.25725 30.6753 7.5727 30.9589 7.06799 31.4636C6.56327 31.9683 6.27972 32.6528 6.27972 33.3666V47.7202C6.27904 48.2562 6.43937 48.78 6.73993 49.2238C6.44518 49.5493 6.28126 49.9724 6.27972 50.4116V52.2058C5.09053 52.2043 3.95045 51.7313 3.10956 50.8904C2.26867 50.0495 1.79563 48.9094 1.79421 47.7202V38.516C1.79218 36.087 2.68696 33.7428 4.30693 31.9329C5.9269 30.1231 8.15801 28.975 10.5724 28.7089L16.1586 28.0917Z"
                                         fill="black" />
@@ -276,7 +268,7 @@ get_header('alt'); ?>
 
 
     <section class="bg-[#F7F6F2]">
-        <div class="p-4 py-8 lg:p-12 xl:p-16">
+        <div class="p-4 py-8 sm:p-8 lg:p-12 xl:p-16">
             <div class="text-center mb-12">
                 <div class="text-[#F78D1E] text-lg font-medium mb-4">Small Steps, Big Impact</div>
                 <div class="text-2xl lg:text-4xl font-bold  text-black">Bringing Positive Change Through Action
@@ -337,7 +329,7 @@ get_header('alt'); ?>
 
 
     <section class="bg-white">
-        <div class="p-4 py-8 lg:p-12 xl:p-16">
+        <div class="p-4 py-8 sm:p-8 lg:p-12 xl:p-16">
             <div class="text-center mb-12">
                 <div class="text-[#F78D1E] text-lg font-medium mb-4">Our Impactful Initiatives</div>
                 <div class="text-2xl lg:text-4xl font-bold  text-black">Transforming Lives Through Our Projects</div>
@@ -467,7 +459,7 @@ get_header('alt'); ?>
     </section>
 
     <section class="bg-[#F7F6F2]">
-        <div class="p-4 py-6 lg:p-12 xl:p-16">
+        <div class="p-4 py-8 sm:p-8 lg:p-12 xl:p-16">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-12">
                 <div class="text-center space-y-4">
                     <div class="text-[#F78D1E] font-bold text-4xl lg:text-5xl">
@@ -499,37 +491,34 @@ get_header('alt'); ?>
     </section>
 
 
-    <section class="text-gray-800 body-font relative">
-        <div class="p-4 py-6 lg:p-12 xl:p-16 relative z-1 backdrop-brightness-20">
+    <section class="text-gray-800 body-font relative bg-fixed bg-cover bg-center"
+        style="background-image: url('wp-content/uploads/2025/03/testimonial-parallax.webp');">
 
+        <div class="p-4 py-8 lg:p-12 xl:p-20 relative z-10 backdrop-brightness-50 bg-black/50">
             <div class="text-center mb-6">
-                <div class="text-[#F78D1E] text-lg font-medium mb-4">
-                    A Strong Desire to achieve something High
+                <div class="text-[#F78D1E]">
+                    <div class="text-2xl lg:text-4xl font-medium mb-2">
+                        "Be the change you wish to see in the world."
+                    </div>
+                    <div class="text-lg">– Mahatma Gandhi</div>
                 </div>
-                <div class="text-2xl lg:text-4xl font-bold  text-white">What We Realised?
-                </div>
-
-
             </div>
-
-
 
             <div class="xl:w-1/2 lg:w-3/4 w-full mx-auto text-center">
-                <p class="leading-relaxed text-lg text-white">We recognize that individuals face numerous challenges in
-                    their daily lives. Through our dedicated services, We are proud to contribute to the wellness of
-                    society by Advancing Education, Social Welfare Programs, Community Empowerment, Supporting NGO's
-                    Initiatives Etc.,
+                <p class="leading-relaxed text-lg text-white">
+                    We believe that personal growth and transformation are essential to creating a life of elegance and
+                    wonder.
+                    Our goal is to help you build confidence, overcome obstacles, and unlock your full potential.
                 </p>
-
             </div>
         </div>
-        <img loading="lazy" src="wp-content/uploads/2025/03/testimonial-parallax.webp" alt="background image"
-            class="absolute top-0 left-0 w-full h-full object-cover z-0 ">
+
     </section>
 
 
+
     <section class="bg-white">
-        <div class="p-4 py-8 lg:p-12 xl:p-16">
+        <div class="p-4 py-8 sm:p-8 lg:p-12 xl:p-16 max-w-7xl mx-auto">
             <div class="text-center mb-12">
                 <div class="text-[#F78D1E] text-lg font-medium mb-4">Team Members</div>
                 <div class="text-2xl lg:text-4xl font-bold  text-black">BOARD OF TRUSTEES</div>
@@ -544,7 +533,7 @@ get_header('alt'); ?>
                 <div class="card w-full max-w-md mx-auto">
                     <img loading="lazy" class="h-42 object-contain" src="wp-content/uploads/2025/04/1.jpg" alt="" />
                     <div class="card-body items-center text-center p-6">
-                        <h2 class="card-title text-lg xl:text-xl font-semibold text-black"> MR. Srinivasan
+                        <h2 class="card-title text-lg xl:text-xl font-semibold text-black"> Mr. Srinivasan
                         </h2>
 
                         <p> (Managing Trustee)
@@ -605,95 +594,84 @@ get_header('alt'); ?>
         </div>
     </section>
 
-    <section class="text-gray-800 body-font relative" id="contact-us">
-        <div class="p-4 py-6 lg:p-12 xl:p-16 relative z-1 backdrop-brightness-30">
+    <section class="relative text-gray-800 body-font" id="contact-us">
+        <!-- Parallax Background -->
+        <div class="absolute inset-0 w-full h-full bg-fixed bg-center bg-cover"
+            style="background-image: url('wp-content/uploads/2025/03/contact-banner.webp');">
+        </div>
 
+        <div class="relative z-10 p-4 py-8 sm:p-8 lg:p-12 xl:p-16 backdrop-brightness-50">
             <div class="text-center mb-10">
                 <div class="text-[#F78D1E] text-lg font-medium mb-4">
                     Join Hands with Us
-
                 </div>
-                <div class="text-2xl lg:text-4xl font-bold  text-white">Contact us to get more updates
-
-
+                <div class="text-2xl lg:text-4xl font-bold text-white">
+                    Contact us to get more updates
                 </div>
-
-
             </div>
 
+            <div class="flex items-center justify-center p-6">
+                <div class="max-w-lg w-full bg-white shadow-lg rounded-lg p-6">
+                    <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">Contact Us</h2>
+                    <form id="contact-form" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Name -->
+                        <div>
+                            <label class="block text-gray-900 font-medium mb-1 text-sm">Enter your Name</label>
+                            <input id="your-name" type="text" name="name"
+                                class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-400 focus:outline-none"
+                                placeholder="John Doe" required>
+                        </div>
 
+                        <!-- Mobile Number -->
+                        <div>
+                            <label class="block text-gray-900 font-medium mb-1 text-sm">Mobile Number</label>
+                            <input id="your-phone" type="tel" minlength="10" maxlength="10"
+                                oninput="this.value = this.value.replace(/[^0-9]/g, '')" name="phone"
+                                class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-400 focus:outline-none"
+                                placeholder="9876543210" pattern="[0-9]{10}" required>
+                        </div>
 
-            <div>
-                <div class="flex items-center justify-center p-6">
-                    <div class="max-w-lg w-full bg-white shadow-lg rounded-lg p-6">
-                        <h2 class="text-2xl font-semibold text-center text-gray-800 mb-6">Contact Us</h2>
-                        <form id="contact-form" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <!-- Email Address -->
+                        <div>
+                            <label class="block text-gray-900 font-medium mb-1 text-sm">Email Address</label>
+                            <input id="your-email" type="email" name="email"
+                                class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-400 focus:outline-none"
+                                placeholder="you@example.com" required>
+                        </div>
 
-                            <!-- Name -->
-                            <div>
-                                <label class="block text-gray-900 font-medium mb-1 text-sm">Enter your Name</label>
-                                <input id="your-name" type="text" name="name" id="name"
-                                    class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-400 focus:outline-none"
-                                    placeholder="John Doe" required>
-                            </div>
+                        <!-- Location -->
+                        <div>
+                            <label class="block text-gray-900 font-medium mb-1 text-sm">Location</label>
+                            <input id="your-location" type="text" name="location"
+                                class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-400 focus:outline-none"
+                                placeholder="City, Country" required>
+                        </div>
 
-                            <!-- Mobile Number -->
-                            <div>
-                                <label class="block text-gray-900 font-medium mb-1 text-sm">Mobile Number</label>
-                                <input id="your-phone" type="tel" minlength="10" maxlength="10"
-                                    oninput="this.value = this.value.replace(/[^0-9]/g, '')" name="phone" id="phone"
-                                    class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-400 focus:outline-none"
-                                    placeholder="9876543210" pattern="[0-9]{10}" required>
-                            </div>
+                        <!-- Comments -->
+                        <div class="md:col-span-2">
+                            <label class="block text-gray-900 font-medium mb-1 text-sm">Comments</label>
+                            <textarea id="your-message" name="comments" rows="4"
+                                class="w-full resize-none px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-400 focus:outline-none"
+                                placeholder="Write your message..."></textarea>
+                        </div>
 
-                            <!-- Email Address -->
-                            <div>
-                                <label class="block text-gray-900 font-medium mb-1 text-sm">Email Address</label>
-                                <input id="your-email" type="email" name="email" id="email"
-                                    class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-400 focus:outline-none"
-                                    placeholder="you@example.com" required>
-                            </div>
-
-                            <!-- Location -->
-                            <div>
-                                <label class="block text-gray-900 font-medium mb-1 text-sm">Location</label>
-                                <input id="your-location" type="text" name="location" id="location"
-                                    class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-400 focus:outline-none"
-                                    placeholder="City, Country" required>
-                            </div>
-
-                            <!-- Comments -->
-                            <div class="md:col-span-2">
-                                <label class="block text-gray-900 font-medium mb-1 text-sm">Comments</label>
-                                <textarea id="your-message" name="comments" id="comments" rows="4"
-                                    class="w-full resize-none px-4 py-2 border rounded-lg focus:ring-2 focus:ring-yellow-400 focus:outline-none"
-                                    placeholder="Write your message..."></textarea>
-                            </div>
-
-                            <!-- Submit Button -->
-                            <div class="text-center  md:col-span-2">
-                                <button type="submit"
-                                    class="bg-[#F78D1E] cursor-pointer text-white font-bold py-2 px-6 rounded-lg hover:bg-[#F78D1E] transition duration-300">
-                                    Submit
-                                </button>
-                            </div>
-
-                        </form>
-                    </div>
+                        <!-- Submit Button -->
+                        <div class="text-center md:col-span-2">
+                            <button type="submit"
+                                class="bg-[#F78D1E] cursor-pointer text-white font-bold py-2 px-6 rounded-lg hover:bg-[#F78D1E] transition duration-300">
+                                Submit
+                            </button>
+                        </div>
+                    </form>
                 </div>
-
             </div>
-
-
-
         </div>
-        <img loading="lazy" src="wp-content/uploads/2025/03/contact-banner.webp" alt="background image"
-            class="absolute top-0 left-0 w-full h-full object-cover z-0">
     </section>
 
 
+
     <section class="bg-[#1A1A1A]">
-        <div class="p-4 py-8 lg:p-12 xl:p-16">
+        <div class="p-4 py-8 sm:p-8 lg:p-12 xl:p-16">
             <div class="text-center mb-12">
                 <div class="text-[#F78D1E] text-lg font-medium mb-4">News & Blog</div>
                 <div class="text-2xl lg:text-4xl font-bold  text-white">Newspaper clippings</div>
@@ -712,16 +690,16 @@ get_header('alt'); ?>
 
 
                     <div class="sm:col-span-1 space-y-4  max-sm:flex max-sm:flex-wrap">
-                        <img src="wp-content/uploads/2025/04/news1.png" alt=""
+                        <img loading="lazy" src="wp-content/uploads/2025/04/news1.png" alt=""
                             class="w-auto md:w-full h-[287px] mx-auto">
-                        <img src="wp-content/uploads/2025/04/news3.png" alt=""
+                        <img loading="lazy" src="wp-content/uploads/2025/04/news3.png" alt=""
                             class="w-auto md:w-full h-[320px] mx-auto">
 
                     </div>
                     <div class="sm:col-span-2 space-y-4  max-sm:flex max-sm:flex-wrap">
-                        <img src="wp-content/uploads/2025/04/news2.png" alt=""
+                        <img loading="lazy" src="wp-content/uploads/2025/04/news2.png" alt=""
                             class="w-auto md:w-full h-[199px] mx-auto">
-                        <img src="wp-content/uploads/2025/04/news4.png" alt=""
+                        <img loading="lazy" src="wp-content/uploads/2025/04/news4.png" alt=""
                             class="w-auto md:w-full h-[410px] mx-auto">
 
                     </div>
@@ -732,23 +710,23 @@ get_header('alt'); ?>
 
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4  max-sm:flex max-sm:flex-wrap justify-center">
                     <div>
-                        <img src="wp-content/uploads/2025/04/news5.png" alt=""
+                        <img loading="lazy" src="wp-content/uploads/2025/04/news5.png" alt=""
                             class="w-auto md:w-full h-[526px] mx-auto">
                     </div>
                     <div>
-                        <img src="wp-content/uploads/2025/04/news6.png" alt=""
+                        <img loading="lazy" src="wp-content/uploads/2025/04/news6.png" alt=""
                             class="w-auto md:w-full h-[526px] mx-auto">
                     </div>
                     <div>
-                        <img src="wp-content/uploads/2025/04/news7.png" alt=""
+                        <img loading="lazy" src="wp-content/uploads/2025/04/news7.png" alt=""
                             class="w-auto md:w-full h-[526px] mx-auto">
                     </div>
                     <div>
-                        <img src="wp-content/uploads/2025/04/news8.png" alt=""
+                        <img loading="lazy" src="wp-content/uploads/2025/04/news8.png" alt=""
                             class="w-auto md:w-full  h-[189px] mx-auto">
                     </div>
                     <div>
-                        <img src="wp-content/uploads/2025/04/news9.png" alt=""
+                        <img loading="lazy" src="wp-content/uploads/2025/04/news9.png" alt=""
                             class="w-auto md:w-full h-[189px] mx-auto">
                     </div>
                     <div
@@ -841,148 +819,269 @@ get_header('alt'); ?>
             </div> -->
         </div>
     </section>
-    <section id="testimonials" aria-label="What our customers are saying" class="bg-gray-200">
-        <div class="mx-auto max-w-7xl p-4 py-6 lg:p-12 xl:p-16">
-            <div class="mx-auto max-w-2xl md:text-center">
-                <h2 class="text-2xl lg:text-4xl font-bold  text-black">What Our Customers Are
-                    Saying</h2>
+
+
+    <!-- <section class="py-24">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+            <div
+                class="mb-14 flex flex-col justify-center items-center sm:flex-row sm:items-center sm:justify-between max-sm:gap-8">
+                <h2 class="text-2xl lg:text-4xl font-bold text-black text-center lg:text-left">Words from our Community
+                </h2>
+              
+                <div class="flex items-center gap-8">
+                    <button id="slider-button-left"
+                        class="swiper-button-prev group flex justify-center items-center border border-solid border-amber-500 !w-12 !h-12 transition-all duration-500 rounded-full hover:bg-amber-500 "
+                        data-carousel-prev>
+                        <svg class="h-6 w-6 text-amber-500 group-hover:text-white" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M20.9999 12L4.99992 12M9.99992 6L4.70703 11.2929C4.3737 11.6262 4.20703 11.7929 4.20703 12C4.20703 12.2071 4.3737 12.3738 4.70703 12.7071L9.99992 18"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+
+                    </button>
+                    <button id="slider-button-right"
+                        class="swiper-button-next group flex justify-center items-center border border-solid border-amber-500 !w-12 !h-12 transition-all duration-500 rounded-full hover:bg-amber-500"
+                        data-carousel-next>
+                        <svg class="h-6 w-6 text-amber-500 group-hover:text-white" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M3 12L19 12M14 18L19.2929 12.7071C19.6262 12.3738 19.7929 12.2071 19.7929 12C19.7929 11.7929 19.6262 11.6262 19.2929 11.2929L14 6"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+
+                    </button>
+                </div>
             </div>
-            <ul role="list"
-                class="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-6 sm:gap-8 lg:mt-20 lg:max-w-none lg:grid-cols-3">
-                <li>
-                    <ul role="list" class="flex flex-col gap-y-6 sm:gap-y-8">
-                        <li>
-                            <figure class="relative rounded-2xl bg-white p-6 shadow-2xl shadow-slate-900/10"><svg
-                                    aria-hidden="true" width="105" height="78"
-                                    class="absolute left-6 top-6 fill-slate-100">
-                                    <path
-                                        d="M25.086 77.292c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622C1.054 58.534 0 53.411 0 47.686c0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C28.325 3.917 33.599 1.507 39.324 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Zm54.24 0c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622-2.11-4.52-3.164-9.643-3.164-15.368 0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C82.565 3.917 87.839 1.507 93.564 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Z">
-                                    </path>
-                                </svg>
-                                <blockquote class="relative">
-                                    <p class="text-lg tracking-tight text-slate-900">I love the fitness apparel and gear
-                                        I purchased from
-                                        this site. The quality is exceptional and the prices are unbeatable.</p>
-                                </blockquote>
-                                <figcaption
-                                    class="relative mt-6 flex items-center justify-between border-t border-slate-100 pt-6">
-                                    <div>
-                                        <div class="font-display text-base text-slate-900">Sheryl Berge</div>
-                                    </div>
-                                    <div class="overflow-hidden rounded-full bg-slate-50">
-                                        <img alt="" class="h-14 w-14 object-cover" style="color:transparent"
-                                            src="https://randomuser.me/api/portraits/men/15.jpg">
-                                    </div>
-                                </figcaption>
-                            </figure>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <ul role="list" class="flex flex-col gap-y-6 sm:gap-y-8">
-                        <li>
-                            <figure class="relative rounded-2xl bg-white p-6 shadow-2xl shadow-slate-900/10"><svg
-                                    aria-hidden="true" width="105" height="78"
-                                    class="absolute left-6 top-6 fill-slate-100">
-                                    <path
-                                        d="M25.086 77.292c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622C1.054 58.534 0 53.411 0 47.686c0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C28.325 3.917 33.599 1.507 39.324 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Zm54.24 0c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622-2.11-4.52-3.164-9.643-3.164-15.368 0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C82.565 3.917 87.839 1.507 93.564 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Z">
-                                    </path>
-                                </svg>
-                                <blockquote class="relative">
-                                    <p class="text-lg tracking-tight text-slate-900">As a professional athlete, I rely
-                                        on high-performance
-                                        gear for my training. This site offers a great selection of top-notch products.
-                                    </p>
-                                </blockquote>
-                                <figcaption
-                                    class="relative mt-6 flex items-center justify-between border-t border-slate-100 pt-6">
-                                    <div>
-                                        <div class="font-display text-base text-slate-900">Leland Kiehn</div>
-                                    </div>
-                                    <div class="overflow-hidden rounded-full bg-slate-50">
-                                        <img alt="" class="h-14 w-14 object-cover" style="color:transparent"
-                                            src="https://randomuser.me/api/portraits/women/15.jpg">
-                                    </div>
-                                </figcaption>
-                            </figure>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <ul role="list" class="flex flex-col gap-y-6 sm:gap-y-8">
-                        <li>
-                            <figure class="relative rounded-2xl bg-white p-6 shadow-2xl shadow-slate-900/10"><svg
-                                    aria-hidden="true" width="105" height="78"
-                                    class="absolute left-6 top-6 fill-slate-100">
-                                    <path
-                                        d="M25.086 77.292c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622C1.054 58.534 0 53.411 0 47.686c0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C28.325 3.917 33.599 1.507 39.324 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Zm54.24 0c-4.821 0-9.115-1.205-12.882-3.616-3.767-2.561-6.78-6.102-9.04-10.622-2.11-4.52-3.164-9.643-3.164-15.368 0-5.273.904-10.396 2.712-15.368 1.959-4.972 4.746-9.567 8.362-13.786a59.042 59.042 0 0 1 12.43-11.3C82.565 3.917 87.839 1.507 93.564 0l11.074 13.786c-6.479 2.561-11.677 5.951-15.594 10.17-3.767 4.219-5.65 7.835-5.65 10.848 0 1.356.377 2.863 1.13 4.52.904 1.507 2.637 3.089 5.198 4.746 3.767 2.41 6.328 4.972 7.684 7.684 1.507 2.561 2.26 5.5 2.26 8.814 0 5.123-1.959 9.19-5.876 12.204-3.767 3.013-8.588 4.52-14.464 4.52Z">
-                                    </path>
-                                </svg>
-                                <blockquote class="relative">
-                                    <p class="text-lg tracking-tight text-slate-900">The fitness apparel I bought here
-                                        fits perfectly and
-                                        feels amazing. I highly recommend this store to anyone looking for quality gear.
-                                    </p>
-                                </blockquote>
-                                <figcaption
-                                    class="relative mt-6 flex items-center justify-between border-t border-slate-100 pt-6">
-                                    <div>
-                                        <div class="font-display text-base text-slate-900">Peter Renolds</div>
-                                    </div>
-                                    <div class="overflow-hidden rounded-full bg-slate-50">
-                                        <img alt="" class="h-14 w-14 object-cover" style="color:transparent"
-                                            src="https://randomuser.me/api/portraits/men/10.jpg">
-                                    </div>
-                                </figcaption>
-                            </figure>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
+            
+            <div
+                class="lg:flex grid grid-cols-1 md:grid-cols-2 justify-center items-center gap-8 swiper mySwiper testimonials-section">
+                <div class="swiper-wrapper">
+                    <div
+                        class="swiper-slide group bg-white border border-solid h-auto border-gray-300 rounded-2xl p-6 transition-all duration-500 w-full hover:border-amber-500 slide-active:border-amber-500">
+                        <div
+                            class="flex items-center mb-9 gap-2 text-amber-500 transition-all duration-500  group-hover:text-amber-500 swiper-slide-active:text-amber-500">
+                            <svg class="w-5 h-5" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M8.10326 1.31699C8.47008 0.57374 9.52992 0.57374 9.89674 1.31699L11.7063 4.98347C11.8519 5.27862 12.1335 5.48319 12.4592 5.53051L16.5054 6.11846C17.3256 6.23765 17.6531 7.24562 17.0596 7.82416L14.1318 10.6781C13.8961 10.9079 13.7885 11.2389 13.8442 11.5632L14.5353 15.5931C14.6754 16.41 13.818 17.033 13.0844 16.6473L9.46534 14.7446C9.17402 14.5915 8.82598 14.5915 8.53466 14.7446L4.91562 16.6473C4.18199 17.033 3.32456 16.41 3.46467 15.5931L4.15585 11.5632C4.21148 11.2389 4.10393 10.9079 3.86825 10.6781L0.940384 7.82416C0.346867 7.24562 0.674378 6.23765 1.4946 6.11846L5.54081 5.53051C5.86652 5.48319 6.14808 5.27862 6.29374 4.98347L8.10326 1.31699Z"
+                                    fill="currentColor" />
+                            </svg>
+                            <svg class="w-5 h-5" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M8.10326 1.31699C8.47008 0.57374 9.52992 0.57374 9.89674 1.31699L11.7063 4.98347C11.8519 5.27862 12.1335 5.48319 12.4592 5.53051L16.5054 6.11846C17.3256 6.23765 17.6531 7.24562 17.0596 7.82416L14.1318 10.6781C13.8961 10.9079 13.7885 11.2389 13.8442 11.5632L14.5353 15.5931C14.6754 16.41 13.818 17.033 13.0844 16.6473L9.46534 14.7446C9.17402 14.5915 8.82598 14.5915 8.53466 14.7446L4.91562 16.6473C4.18199 17.033 3.32456 16.41 3.46467 15.5931L4.15585 11.5632C4.21148 11.2389 4.10393 10.9079 3.86825 10.6781L0.940384 7.82416C0.346867 7.24562 0.674378 6.23765 1.4946 6.11846L5.54081 5.53051C5.86652 5.48319 6.14808 5.27862 6.29374 4.98347L8.10326 1.31699Z"
+                                    fill="currentColor" />
+                            </svg>
+                            <svg class="w-5 h-5" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M8.10326 1.31699C8.47008 0.57374 9.52992 0.57374 9.89674 1.31699L11.7063 4.98347C11.8519 5.27862 12.1335 5.48319 12.4592 5.53051L16.5054 6.11846C17.3256 6.23765 17.6531 7.24562 17.0596 7.82416L14.1318 10.6781C13.8961 10.9079 13.7885 11.2389 13.8442 11.5632L14.5353 15.5931C14.6754 16.41 13.818 17.033 13.0844 16.6473L9.46534 14.7446C9.17402 14.5915 8.82598 14.5915 8.53466 14.7446L4.91562 16.6473C4.18199 17.033 3.32456 16.41 3.46467 15.5931L4.15585 11.5632C4.21148 11.2389 4.10393 10.9079 3.86825 10.6781L0.940384 7.82416C0.346867 7.24562 0.674378 6.23765 1.4946 6.11846L5.54081 5.53051C5.86652 5.48319 6.14808 5.27862 6.29374 4.98347L8.10326 1.31699Z"
+                                    fill="currentColor" />
+                            </svg>
+                            <svg class="w-5 h-5" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M8.10326 1.31699C8.47008 0.57374 9.52992 0.57374 9.89674 1.31699L11.7063 4.98347C11.8519 5.27862 12.1335 5.48319 12.4592 5.53051L16.5054 6.11846C17.3256 6.23765 17.6531 7.24562 17.0596 7.82416L14.1318 10.6781C13.8961 10.9079 13.7885 11.2389 13.8442 11.5632L14.5353 15.5931C14.6754 16.41 13.818 17.033 13.0844 16.6473L9.46534 14.7446C9.17402 14.5915 8.82598 14.5915 8.53466 14.7446L4.91562 16.6473C4.18199 17.033 3.32456 16.41 3.46467 15.5931L4.15585 11.5632C4.21148 11.2389 4.10393 10.9079 3.86825 10.6781L0.940384 7.82416C0.346867 7.24562 0.674378 6.23765 1.4946 6.11846L5.54081 5.53051C5.86652 5.48319 6.14808 5.27862 6.29374 4.98347L8.10326 1.31699Z"
+                                    fill="currentColor" />
+                            </svg>
+                            <svg class="w-5 h-5" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M8.10326 1.31699C8.47008 0.57374 9.52992 0.57374 9.89674 1.31699L11.7063 4.98347C11.8519 5.27862 12.1335 5.48319 12.4592 5.53051L16.5054 6.11846C17.3256 6.23765 17.6531 7.24562 17.0596 7.82416L14.1318 10.6781C13.8961 10.9079 13.7885 11.2389 13.8442 11.5632L14.5353 15.5931C14.6754 16.41 13.818 17.033 13.0844 16.6473L9.46534 14.7446C9.17402 14.5915 8.82598 14.5915 8.53466 14.7446L4.91562 16.6473C4.18199 17.033 3.32456 16.41 3.46467 15.5931L4.15585 11.5632C4.21148 11.2389 4.10393 10.9079 3.86825 10.6781L0.940384 7.82416C0.346867 7.24562 0.674378 6.23765 1.4946 6.11846L5.54081 5.53051C5.86652 5.48319 6.14808 5.27862 6.29374 4.98347L8.10326 1.31699Z"
+                                    fill="currentColor" />
+                            </svg>
+                        </div>
+                        <p
+                            class="text-lg text-gray-500 leading-8 h-24 transition-all duration-500 mb-9 group-hover:text-gray-800">
+                            Thrilled to have completed the 3-month Sewing Training Program! Huge thanks to the team for
+                            their expertise and support. Which was a startup for my career.
+                        </p>
+                        <div class="flex items-center gap-2">
+                            <div
+                                class="w-12 h-12 rounded-full bg-amber-500 flex items-center justify-center text-white font-bold text-lg">
+                                J
+                            </div>
+                            <div class="grid gap-1">
+                                <h5 class="text-gray-900 font-medium">
+                                    Jane D
+                                </h5>
+                               
+                            </div>
+                        </div>
+
+                    </div>
+                    <div
+                        class="swiper-slide group bg-white border border-solid border-gray-300 rounded-2xl p-6 transition-all duration-500 w-full hover:border-amber-500 slide-active:border-amber-500">
+                        <div
+                            class="flex items-center mb-9 gap-2 text-amber-500 transition-all duration-500  group-hover:text-amber-500 swiper-slide-active:text-amber-500">
+                            <svg class="w-5 h-5" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M8.10326 1.31699C8.47008 0.57374 9.52992 0.57374 9.89674 1.31699L11.7063 4.98347C11.8519 5.27862 12.1335 5.48319 12.4592 5.53051L16.5054 6.11846C17.3256 6.23765 17.6531 7.24562 17.0596 7.82416L14.1318 10.6781C13.8961 10.9079 13.7885 11.2389 13.8442 11.5632L14.5353 15.5931C14.6754 16.41 13.818 17.033 13.0844 16.6473L9.46534 14.7446C9.17402 14.5915 8.82598 14.5915 8.53466 14.7446L4.91562 16.6473C4.18199 17.033 3.32456 16.41 3.46467 15.5931L4.15585 11.5632C4.21148 11.2389 4.10393 10.9079 3.86825 10.6781L0.940384 7.82416C0.346867 7.24562 0.674378 6.23765 1.4946 6.11846L5.54081 5.53051C5.86652 5.48319 6.14808 5.27862 6.29374 4.98347L8.10326 1.31699Z"
+                                    fill="currentColor" />
+                            </svg>
+                            <svg class="w-5 h-5" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M8.10326 1.31699C8.47008 0.57374 9.52992 0.57374 9.89674 1.31699L11.7063 4.98347C11.8519 5.27862 12.1335 5.48319 12.4592 5.53051L16.5054 6.11846C17.3256 6.23765 17.6531 7.24562 17.0596 7.82416L14.1318 10.6781C13.8961 10.9079 13.7885 11.2389 13.8442 11.5632L14.5353 15.5931C14.6754 16.41 13.818 17.033 13.0844 16.6473L9.46534 14.7446C9.17402 14.5915 8.82598 14.5915 8.53466 14.7446L4.91562 16.6473C4.18199 17.033 3.32456 16.41 3.46467 15.5931L4.15585 11.5632C4.21148 11.2389 4.10393 10.9079 3.86825 10.6781L0.940384 7.82416C0.346867 7.24562 0.674378 6.23765 1.4946 6.11846L5.54081 5.53051C5.86652 5.48319 6.14808 5.27862 6.29374 4.98347L8.10326 1.31699Z"
+                                    fill="currentColor" />
+                            </svg>
+                            <svg class="w-5 h-5" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M8.10326 1.31699C8.47008 0.57374 9.52992 0.57374 9.89674 1.31699L11.7063 4.98347C11.8519 5.27862 12.1335 5.48319 12.4592 5.53051L16.5054 6.11846C17.3256 6.23765 17.6531 7.24562 17.0596 7.82416L14.1318 10.6781C13.8961 10.9079 13.7885 11.2389 13.8442 11.5632L14.5353 15.5931C14.6754 16.41 13.818 17.033 13.0844 16.6473L9.46534 14.7446C9.17402 14.5915 8.82598 14.5915 8.53466 14.7446L4.91562 16.6473C4.18199 17.033 3.32456 16.41 3.46467 15.5931L4.15585 11.5632C4.21148 11.2389 4.10393 10.9079 3.86825 10.6781L0.940384 7.82416C0.346867 7.24562 0.674378 6.23765 1.4946 6.11846L5.54081 5.53051C5.86652 5.48319 6.14808 5.27862 6.29374 4.98347L8.10326 1.31699Z"
+                                    fill="currentColor" />
+                            </svg>
+                            <svg class="w-5 h-5" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M8.10326 1.31699C8.47008 0.57374 9.52992 0.57374 9.89674 1.31699L11.7063 4.98347C11.8519 5.27862 12.1335 5.48319 12.4592 5.53051L16.5054 6.11846C17.3256 6.23765 17.6531 7.24562 17.0596 7.82416L14.1318 10.6781C13.8961 10.9079 13.7885 11.2389 13.8442 11.5632L14.5353 15.5931C14.6754 16.41 13.818 17.033 13.0844 16.6473L9.46534 14.7446C9.17402 14.5915 8.82598 14.5915 8.53466 14.7446L4.91562 16.6473C4.18199 17.033 3.32456 16.41 3.46467 15.5931L4.15585 11.5632C4.21148 11.2389 4.10393 10.9079 3.86825 10.6781L0.940384 7.82416C0.346867 7.24562 0.674378 6.23765 1.4946 6.11846L5.54081 5.53051C5.86652 5.48319 6.14808 5.27862 6.29374 4.98347L8.10326 1.31699Z"
+                                    fill="currentColor" />
+                            </svg>
+                            <svg class="w-5 h-5" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M8.10326 1.31699C8.47008 0.57374 9.52992 0.57374 9.89674 1.31699L11.7063 4.98347C11.8519 5.27862 12.1335 5.48319 12.4592 5.53051L16.5054 6.11846C17.3256 6.23765 17.6531 7.24562 17.0596 7.82416L14.1318 10.6781C13.8961 10.9079 13.7885 11.2389 13.8442 11.5632L14.5353 15.5931C14.6754 16.41 13.818 17.033 13.0844 16.6473L9.46534 14.7446C9.17402 14.5915 8.82598 14.5915 8.53466 14.7446L4.91562 16.6473C4.18199 17.033 3.32456 16.41 3.46467 15.5931L4.15585 11.5632C4.21148 11.2389 4.10393 10.9079 3.86825 10.6781L0.940384 7.82416C0.346867 7.24562 0.674378 6.23765 1.4946 6.11846L5.54081 5.53051C5.86652 5.48319 6.14808 5.27862 6.29374 4.98347L8.10326 1.31699Z"
+                                    fill="currentColor" />
+                            </svg>
+                        </div>
+                        <p
+                            class="text-lg text-gray-500 leading-8 h-24 transition-all duration-500 mb-9  group-hover:text-gray-800">
+                            Thanks for providing a safe and convenient bus stop for our community. Your efforts are
+                            truly appreciated.
+                        </p>
+                        <div class="flex items-center gap-2">
+                            <div
+                                class="w-12 h-12 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold text-lg">
+                                H
+                            </div>
+                            <div class="grid gap-1">
+                                <h5 class="text-gray-900 font-medium ">
+                                    Harsh P.</h5>
+                               
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="swiper-slide group bg-white border border-solid border-gray-300 rounded-2xl p-6 transition-all duration-500 w-full hover:border-amber-500 ">
+                        <div
+                            class="flex items-center mb-9 gap-2 text-amber-500 transition-all duration-500  group-hover:text-amber-500 swiper-slide-active:text-amber-500">
+                            <svg class="w-5 h-5" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M8.10326 1.31699C8.47008 0.57374 9.52992 0.57374 9.89674 1.31699L11.7063 4.98347C11.8519 5.27862 12.1335 5.48319 12.4592 5.53051L16.5054 6.11846C17.3256 6.23765 17.6531 7.24562 17.0596 7.82416L14.1318 10.6781C13.8961 10.9079 13.7885 11.2389 13.8442 11.5632L14.5353 15.5931C14.6754 16.41 13.818 17.033 13.0844 16.6473L9.46534 14.7446C9.17402 14.5915 8.82598 14.5915 8.53466 14.7446L4.91562 16.6473C4.18199 17.033 3.32456 16.41 3.46467 15.5931L4.15585 11.5632C4.21148 11.2389 4.10393 10.9079 3.86825 10.6781L0.940384 7.82416C0.346867 7.24562 0.674378 6.23765 1.4946 6.11846L5.54081 5.53051C5.86652 5.48319 6.14808 5.27862 6.29374 4.98347L8.10326 1.31699Z"
+                                    fill="currentColor" />
+                            </svg>
+                            <svg class="w-5 h-5" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M8.10326 1.31699C8.47008 0.57374 9.52992 0.57374 9.89674 1.31699L11.7063 4.98347C11.8519 5.27862 12.1335 5.48319 12.4592 5.53051L16.5054 6.11846C17.3256 6.23765 17.6531 7.24562 17.0596 7.82416L14.1318 10.6781C13.8961 10.9079 13.7885 11.2389 13.8442 11.5632L14.5353 15.5931C14.6754 16.41 13.818 17.033 13.0844 16.6473L9.46534 14.7446C9.17402 14.5915 8.82598 14.5915 8.53466 14.7446L4.91562 16.6473C4.18199 17.033 3.32456 16.41 3.46467 15.5931L4.15585 11.5632C4.21148 11.2389 4.10393 10.9079 3.86825 10.6781L0.940384 7.82416C0.346867 7.24562 0.674378 6.23765 1.4946 6.11846L5.54081 5.53051C5.86652 5.48319 6.14808 5.27862 6.29374 4.98347L8.10326 1.31699Z"
+                                    fill="currentColor" />
+                            </svg>
+                            <svg class="w-5 h-5" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M8.10326 1.31699C8.47008 0.57374 9.52992 0.57374 9.89674 1.31699L11.7063 4.98347C11.8519 5.27862 12.1335 5.48319 12.4592 5.53051L16.5054 6.11846C17.3256 6.23765 17.6531 7.24562 17.0596 7.82416L14.1318 10.6781C13.8961 10.9079 13.7885 11.2389 13.8442 11.5632L14.5353 15.5931C14.6754 16.41 13.818 17.033 13.0844 16.6473L9.46534 14.7446C9.17402 14.5915 8.82598 14.5915 8.53466 14.7446L4.91562 16.6473C4.18199 17.033 3.32456 16.41 3.46467 15.5931L4.15585 11.5632C4.21148 11.2389 4.10393 10.9079 3.86825 10.6781L0.940384 7.82416C0.346867 7.24562 0.674378 6.23765 1.4946 6.11846L5.54081 5.53051C5.86652 5.48319 6.14808 5.27862 6.29374 4.98347L8.10326 1.31699Z"
+                                    fill="currentColor" />
+                            </svg>
+                            <svg class="w-5 h-5" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M8.10326 1.31699C8.47008 0.57374 9.52992 0.57374 9.89674 1.31699L11.7063 4.98347C11.8519 5.27862 12.1335 5.48319 12.4592 5.53051L16.5054 6.11846C17.3256 6.23765 17.6531 7.24562 17.0596 7.82416L14.1318 10.6781C13.8961 10.9079 13.7885 11.2389 13.8442 11.5632L14.5353 15.5931C14.6754 16.41 13.818 17.033 13.0844 16.6473L9.46534 14.7446C9.17402 14.5915 8.82598 14.5915 8.53466 14.7446L4.91562 16.6473C4.18199 17.033 3.32456 16.41 3.46467 15.5931L4.15585 11.5632C4.21148 11.2389 4.10393 10.9079 3.86825 10.6781L0.940384 7.82416C0.346867 7.24562 0.674378 6.23765 1.4946 6.11846L5.54081 5.53051C5.86652 5.48319 6.14808 5.27862 6.29374 4.98347L8.10326 1.31699Z"
+                                    fill="currentColor" />
+                            </svg>
+                            <svg class="w-5 h-5" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M8.10326 1.31699C8.47008 0.57374 9.52992 0.57374 9.89674 1.31699L11.7063 4.98347C11.8519 5.27862 12.1335 5.48319 12.4592 5.53051L16.5054 6.11846C17.3256 6.23765 17.6531 7.24562 17.0596 7.82416L14.1318 10.6781C13.8961 10.9079 13.7885 11.2389 13.8442 11.5632L14.5353 15.5931C14.6754 16.41 13.818 17.033 13.0844 16.6473L9.46534 14.7446C9.17402 14.5915 8.82598 14.5915 8.53466 14.7446L4.91562 16.6473C4.18199 17.033 3.32456 16.41 3.46467 15.5931L4.15585 11.5632C4.21148 11.2389 4.10393 10.9079 3.86825 10.6781L0.940384 7.82416C0.346867 7.24562 0.674378 6.23765 1.4946 6.11846L5.54081 5.53051C5.86652 5.48319 6.14808 5.27862 6.29374 4.98347L8.10326 1.31699Z"
+                                    fill="currentColor" />
+                            </svg>
+                        </div>
+                        <p
+                            class="text-lg text-gray-500 leading-8  transition-all duration-500 mb-9 group-hover:text-gray-800 ">
+                            I recently visited Emerald Health Care Centre for diabetes treatment and was thoroughly
+                            impressed with the care I received. After just three sessions, I saw a significant
+                            improvement in my sugar levels.
+                        </p>
+                        <div class="flex items-center gap-2">
+                            <div
+                                class="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-white font-bold text-lg">
+                                A
+                            </div>
+                            <div class="grid gap-1">
+                                <h5 class="text-gray-900 font-medium">
+                                    Alex K.</h5>
+                                
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
         </div>
-    </section>
+    </section> -->
+
+
 
 
     <section class="bg-[#F7F6F2] p-4 py-6 lg:p-12">
-        <div class="max-w-5xl mx-auto p-4 py-6 lg:p-12 xl:p-16 bg-white rounded-lg shadow-2xl my-10">
+        <div class="max-w-5xl mx-auto p-4 py-8 sm:p-8 lg:p-12 xl:p-16 bg-white rounded-lg shadow-2xl my-10">
             <h2 class="text-2xl lg:text-4xl font-bold  text-black text-center">Frequently Asked Questions</h2>
             <div class="mt-6 space-y-4">
 
                 <!-- FAQ Item -->
                 <div x-data="{ open: false }" class="border-b">
                     <button @click="open = !open"
-                        class="w-full flex justify-between items-center p-4 text-left text-gray-900 font-semibold">
-                        What is your return policy?
+                        class="w-full flex justify-between items-start p-4 text-left text-gray-900 font-semibold cursor-pointer">
+                        1. Who are the beneficiaries of the Trust Program?
                         <span x-text="open ? '-' : '+' " class="text-lg font-bold text-gray-800"></span>
                     </button>
                     <div x-show="open" x-collapse class="p-4 text-gray-800">
-                        We offer a 30-day return policy for unused products in original packaging.
+                        We're here to support you! Our trust empowers students, entrepreneurs, and small business
+                        owners. Facing a medical crisis? Our experts offer personalized care and solutions.
                     </div>
                 </div>
 
                 <!-- FAQ Item -->
                 <div x-data="{ open: false }" class="border-b">
                     <button @click="open = !open"
-                        class="w-full flex justify-between items-center p-4 text-left text-gray-900 font-semibold">
-                        How long does shipping take?
+                        class="w-full flex justify-between items-start p-4 text-left text-gray-900 font-semibold cursor-pointer">
+                        2. Is the Trust Certified?
+
                         <span x-text="open ? '-' : '+' " class="text-lg font-bold text-gray-800"></span>
                     </button>
                     <div x-show="open" x-collapse class="p-4 text-gray-800">
-                        Standard shipping takes 5-7 business days, while express shipping takes 2-3 business days.
+                        Yes, our Trust is CEA Certified and 80G & 12A Registered under the Income Tax Act. It is also
+                        registered with Darpan (Reg. No: TN/2024/0425835).
                     </div>
                 </div>
 
                 <!-- FAQ Item -->
                 <div x-data="{ open: false }" class="border-b">
                     <button @click="open = !open"
-                        class="w-full flex justify-between items-center p-4 text-left text-gray-900 font-semibold">
-                        Do you offer international shipping?
+                        class="w-full flex justify-between items-start p-4 text-left text-gray-900 font-semibold cursor-pointer">
+                        3. How can I stay updated on the trust’s latest activities and initiatives?
                         <span x-text="open ? '-' : '+' " class="text-lg font-bold text-gray-800"></span>
                     </button>
                     <div x-show="open" x-collapse class="p-4 text-gray-800">
-                        Yes, we ship to many countries. Shipping costs vary based on location.
+                        Get in touch with us anytime! Visit our official website or call 24/7 Helpline for assistance.
                     </div>
                 </div>
+
+
+                <!-- FAQ Item -->
+                <div x-data="{ open: false }" class="border-b">
+                    <button @click="open = !open"
+                        class="w-full flex justify-between items-start p-4 text-left text-gray-900 font-semibold cursor-pointer">
+                        4. How can I donate to KCT?
+                        <span x-text="open ? '-' : '+' " class="text-lg font-bold text-gray-800"></span>
+                    </button>
+                    <div x-show="open" x-collapse class="p-4 text-gray-800">
+                        You can donate through our website by clicking on the "Donate Now" button.
+                    </div>
+                </div>
+
+
+                <!-- FAQ Item -->
+                <div x-data="{ open: false }" class="border-b">
+                    <button @click="open = !open"
+                        class="w-full flex justify-between items-start p-4 text-left text-gray-900 font-semibold cursor-pointer">
+                        5. How can I provide feedback or suggestions?
+                        <span x-text="open ? '-' : '+' " class="text-lg font-bold text-gray-800"></span>
+                    </button>
+                    <div x-show="open" x-collapse class="p-4 text-gray-800">
+                        We value your input. Please use the feedback form on our "Contact Us" page to share your
+                        thoughts via Official Email.
+                    </div>
+                </div>
+
 
             </div>
         </div>
@@ -1116,6 +1215,38 @@ let swiper2 = new Swiper(".swiper-gallery", {
     },
     pagination: {
         el: ".swiper-pagination",
+    },
+});
+
+
+let swipere = new Swiper(".testimonials-section", {
+    slidesPerView: 3,
+    spaceBetween: 28,
+    centeredSlides: false,
+    loop: true,
+    pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+    },
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+        0: {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            centeredSlides: false,
+        },
+        768: {
+            slidesPerView: 2,
+            spaceBetween: 28,
+            centeredSlides: true,
+        },
+        1024: {
+            slidesPerView: 2,
+            spaceBetween: 32,
+        },
     },
 });
 </script>
