@@ -89,7 +89,7 @@ get_header('alt');
                 </div>
 
                 <div
-                    class="overflow-x-auto max-w-screen border border-[#626262] rounded-sm">
+                    class="overflow-x-auto max-w-screen border border-[#626262] rounded-md">
                     <table class="border-collapse w-full whitespace-nowrap">
                         <thead
                             class="text-center text-md lg:text-lg uppercase text-white bg-gradient-to-r from-[#E65D00] to-[#FFB040]">
